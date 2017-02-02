@@ -15,6 +15,7 @@ Overview of my assignemnt:
 /*Classes used*/
 Player player;
 Enemy enemy;
+Gun gun;
 
 /*Sounds used*/
 
@@ -31,6 +32,9 @@ void setup()
   
   //Enemy
   enemy = new Enemy(width/3, height/3, 20);
+  
+  //Gun
+  gun = new Gun (width/2, height/2, width/2 + 30, height/2 + 30);
 }
 
 void draw()
@@ -40,4 +44,5 @@ void draw()
   /* Classes */
   player.display();
   enemy.display();
+  gun.shoot();
 }
