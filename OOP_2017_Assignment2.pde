@@ -9,6 +9,7 @@ Overview of my assignemnt:
 */
 
 /*Imports*/
+import ddf.minim.*;
 
 /*Boolean used*/
 
@@ -19,7 +20,9 @@ Gun gun;
 //Bullet bullet;
 
 /*Sounds and Images used*/
-PImage bg; 
+PImage bg;
+AudioPlayer BackSound;
+Minim minim;
 
 /*int float etc.*/
 
@@ -39,7 +42,10 @@ void setup()
   gun = new Gun (width/2, height/2);
   
   /*Others*/
-  
+  //Backgrounf Music
+  minim = new Minim(this);
+  BackSound = minim.loadFile("BackSound.mp3");
+  BackSound.loop();
   //loading background Image
   bg = loadImage("BackGround.jpg");//http://img00.deviantart.net/5353/i/2013/276/f/6/ground_texture_06_by_bluecrystaleagle-d6p34ei.jpg
 }
