@@ -10,3 +10,4 @@ abstract class Skeleton
   
   abstract void update();
   abstract void display();
+}

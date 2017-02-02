@@ -1,8 +1,8 @@
-class Player extends Skeleton
+class Enemy extends Skeleton
 {
   float x, y, r;
   
-  Player(float xx, float yy, float rr)
+  Enemy(float xx, float yy, float rr)
   {
     x = xx;
     y = yy;
@@ -17,7 +17,7 @@ class Player extends Skeleton
   void display()
   {
     pushMatrix();
-    fill(#FCFF64);
+    fill(#F5E2B9);
     ellipse(x, y, r,r);
     popMatrix();
   }
