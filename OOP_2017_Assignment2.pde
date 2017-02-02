@@ -16,8 +16,10 @@ Overview of my assignemnt:
 Player player;
 Enemy enemy;
 Gun gun;
+//Bullet bullet;
 
-/*Sounds used*/
+/*Sounds and Images used*/
+PImage bg; 
 
 /*int float etc.*/
 
@@ -35,11 +37,16 @@ void setup()
   
   //Gun
   gun = new Gun (width/2, height/2);
+  
+  /*Others*/
+  
+  //loading background Image
+  bg = loadImage("BackGround.jpg");//http://img00.deviantart.net/5353/i/2013/276/f/6/ground_texture_06_by_bluecrystaleagle-d6p34ei.jpg
 }
 
 void draw()
 {
-  background(0);
+  background(bg);
   
   /* Classes */
   player.display();
