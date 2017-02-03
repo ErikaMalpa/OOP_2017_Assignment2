@@ -19,5 +19,4 @@ class Gun
     stroke(255);
     line(0,0,mouse.x,mouse.y);
   }
-  
 }

@@ -17,11 +17,12 @@ import ddf.minim.*;
 Player player;
 Enemy enemy;
 Gun gun;
-Bullet bullet;
+//Bullet bullet;
 
 /*Sounds and Images used*/
 PImage bg;
 AudioPlayer BackSound;
+AudioPlayer gunshot;
 Minim minim;
 
 /*int float etc.*/
@@ -42,13 +43,16 @@ void setup()
   gun = new Gun (width/2, height/2);
   
   //Bullet
-  bullet = new Bullet(width/3, height/3, 5);
+  //bullet = new Bullet(width/3, height/3, 5);
   
   /*Others*/
+  
   //Backgrounf Music
   minim = new Minim(this);
   BackSound = minim.loadFile("BackSound.mp3");
+  gunshot = minim.loadFile("gunshot.wav");
   BackSound.loop();
+  
   //loading background Image
   bg = loadImage("BackGround.jpg");//http://img00.deviantart.net/5353/i/2013/276/f/6/ground_texture_06_by_bluecrystaleagle-d6p34ei.jpg
 }
@@ -58,8 +62,9 @@ void draw()
   background(bg);
   
   /* Classes */
+  player.update();
   player.display();
   enemy.display();
   gun.shoot();
-  bullet.display();
+  //bullet.display();
 }
