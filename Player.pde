@@ -26,6 +26,8 @@ class Player extends Skeleton
         shoot = false;
         bulletCounter = 0;
         println("Shoot");
+        gunshot.rewind();
+        gunshot.play();
       }
     }
     
