@@ -17,7 +17,7 @@ import ddf.minim.*;
 Player player;
 Enemy enemy;
 Gun gun;
-//Bullet bullet;
+Bullet bullet;
 
 /*Sounds and Images used*/
 PImage bg;
@@ -41,6 +41,9 @@ void setup()
   //Gun
   gun = new Gun (width/2, height/2);
   
+  //Bullet
+  bullet = new Bullet(width/3, height/3, 5);
+  
   /*Others*/
   //Backgrounf Music
   minim = new Minim(this);
@@ -58,4 +61,5 @@ void draw()
   player.display();
   enemy.display();
   gun.shoot();
+  bullet.display();
 }

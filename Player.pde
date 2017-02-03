@@ -17,6 +17,7 @@ class Player extends Skeleton
   void display()
   {
     pushMatrix();
+    noStroke();
     fill(#FCFF64);
     ellipse(x, y, r,r);
     popMatrix();

@@ -1,6 +1,7 @@
 class Gun
 {
   float x, y;
+  
   Gun(float xx, float yy)
   {
     x = xx;
