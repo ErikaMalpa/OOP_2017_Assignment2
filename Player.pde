@@ -34,7 +34,7 @@ class Player extends Skeleton
     if (shoot == false) 
     {
       bulletCounter ++;
-      if( bulletCounter == 5);
+      if( bulletCounter == 10)
       {
         shoot = true;
       }
@@ -51,7 +51,7 @@ class Player extends Skeleton
   {
     pushMatrix();
     noStroke();
-    fill(#FCFF64);
+    fill(#796D3E);
     ellipse(x, y, r,r);
     popMatrix();
   }
