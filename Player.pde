@@ -34,7 +34,10 @@ class Player extends Skeleton
     if (shoot == false) 
     {
       bulletCounter ++;
-      shoot = true;
+      if( bulletCounter == 5);
+      {
+        shoot = true;
+      }
     }
     
     for (i = bullets.size()-1; i >= 0; i--) 

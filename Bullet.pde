@@ -16,12 +16,14 @@ class Bullet
   
   void update()
   {
+    pushMatrix();
     //to move the bullet
     location.x = location.x + cos(rot/180*PI)*speed;
     location.y = location.y + sin(rot/180*PI)*speed;
     stroke(#003D64);
     noFill();
     ellipse(location.x, location.y, r,r);
+    popMatrix();
   }
   
 }

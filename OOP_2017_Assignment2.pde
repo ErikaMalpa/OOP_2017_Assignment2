@@ -27,6 +27,8 @@ Minim minim;
 
 /*int float etc.*/
 
+/*Others*/
+
 void setup()
 {
   size(900,900);
@@ -60,6 +62,13 @@ void setup()
 void draw()
 {
   background(bg);
+  
+  pushMatrix();
+  noStroke();
+  fill(0);
+  rect(1,1,900,50);
+  rect(1,850,900,50);
+  popMatrix();
   
   /* Classes */
   player.update();
