@@ -36,6 +36,9 @@ void setup()
 {
   size(900,900);
   
+  EnterName = false;
+  Begin = false;
+  
   /*Classes*/
   
   //Player
@@ -65,6 +68,12 @@ void setup()
 
 void draw()
 {
+  if(!Begin)
+  {
+  startMenu();
+  }
+  if(Begin)
+  {
   background(bg);
   
   pushMatrix();
@@ -78,6 +87,7 @@ void draw()
   player.update();
   player.display();
   gun.shoot();
+  }
 }
 
 void startMenu()
@@ -126,13 +136,14 @@ void keyPressed()
       EnterName = true;
       print("true");
     }
-    if (keyCode == ALT)
+  }
+  if (keyCode == ALT)
     {
       print("ALT");
+      Begin = true;
     }
     if (keyCode == CONTROL)
     {
       print("CONTROL");
     }
-  }
 }
