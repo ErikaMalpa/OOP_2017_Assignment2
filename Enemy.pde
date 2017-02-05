@@ -1,6 +1,6 @@
 class Enemy extends Skeleton
 {
-  float x, y, r, midX, midY;
+  float x, y, r, speedX, speedY;
   
   Enemy(float xx, float yy, float rr)
   {
@@ -8,13 +8,14 @@ class Enemy extends Skeleton
     y = yy;
     r = rr;
     
-    midX = width/2;
-    midY = height/2;
+    speedX = random(-5,5);
+    speedY = random(-5,5);
   }
   
   void update()
   {
-    
+    x += speedX;
+    y += speedY;
   }
   
   void display()
