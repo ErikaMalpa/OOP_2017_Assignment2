@@ -17,9 +17,7 @@ Boolean Begin;
 
 /*Classes used*/
 Player player;
-Enemy[] enemy = new Enemy[10];
 Gun gun;
-//Bullet bullet;
 
 /*Sounds and Images used*/
 PImage bg;
@@ -42,17 +40,8 @@ void setup()
   //Player
   player = new Player(width/2, height/2, 50);
   
-  //Enemy
-  for( int i = 0; i < enemy.length; i++)
-  {
-  enemy[i] = new Enemy(random(50,800),random(50,800), 20);
-  }
-  
   //Gun
   gun = new Gun (width/2, height/2);
-  
-  //Bullet
-  //bullet = new Bullet(width/3, height/3, 5);
   
   /*Others*/
   
@@ -80,13 +69,7 @@ void draw()
   /* Classes */
   player.update();
   player.display();
-  for( int i = 0; i < enemy.length; i++)
-  {
-  enemy[i].display();
-  enemy[i].update();
-  }
   gun.shoot();
-  //bullet.display();
 }
 /*
 void MenuDisplay()

@@ -7,17 +7,35 @@ class Player extends Skeleton
   PVector location;
   ArrayList<Bullet> bullets;
   
+  Enemy[] enemy = new Enemy[10];
+  
   Player(float xx, float yy, float rr)
   {
     x = xx;
     y = yy;
     r = rr;
+    
     location = new PVector(width/2, height/2);
+    
     bullets = new ArrayList<Bullet>();
+    
+    //Enemy
+    for( int i = 0; i < enemy.length; i++)
+    {
+      enemy[i] = new Enemy(random(50,800),random(50,800), 20);
+    }
+  
+  
   }
   
   void update()
   {
+    for( int i = 0; i < enemy.length; i++)
+    {
+      enemy[i].display();
+      enemy[i].update();
+    }
+    
     if (mousePressed == true) 
     {
       if (shoot == true) 
@@ -42,8 +60,8 @@ class Player extends Skeleton
     
     for (i = bullets.size()-1; i >= 0; i--) 
     {
-    Bullet bullet = bullets.get(i);
-    bullet.update();
+      Bullet bullet = bullets.get(i);
+      bullet.update();
     }
   }
   
