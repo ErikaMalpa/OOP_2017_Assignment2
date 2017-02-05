@@ -12,20 +12,24 @@ Overview of my assignemnt:
 import ddf.minim.*;
 
 /*Boolean used*/
+Boolean EnterName;
+Boolean Begin;
 
 /*Classes used*/
 Player player;
-Enemy enemy;
+Enemy[] enemy = new Enemy[10];
 Gun gun;
 //Bullet bullet;
 
 /*Sounds and Images used*/
 PImage bg;
+PImage bg2;
 AudioPlayer BackSound;
 AudioPlayer gunshot;
 Minim minim;
 
 /*int float etc.*/
+String chosenName;
 
 /*Others*/
 
@@ -39,7 +43,10 @@ void setup()
   player = new Player(width/2, height/2, 50);
   
   //Enemy
-  enemy = new Enemy(width/3, height/3, 20);
+  for( int i = 0; i < enemy.length; i++)
+  {
+  enemy[i] = new Enemy(random(50,800),random(50,800), 20);
+  }
   
   //Gun
   gun = new Gun (width/2, height/2);
@@ -73,7 +80,32 @@ void draw()
   /* Classes */
   player.update();
   player.display();
-  enemy.display();
+  for( int i = 0; i < enemy.length; i++)
+  {
+  enemy[i].display();
+  enemy[i].update();
+  }
   gun.shoot();
   //bullet.display();
 }
+/*
+void MenuDisplay()
+{
+  background (0);
+  textAlign(CENTER);
+  
+  if(EnterName == false)
+  {
+    text("Enter your chosen EnterName : " + chosenName, width/2,height/-3);
+    text("Enter if you dare!", width/2,height/2);
+  }
+  
+  if(EnterName == true)
+  {
+    text("Welcome " + chosenName + "to Zombie Attack", width/2, height/2);
+    text("Play", width/2, height/3);
+    text("Highscore" ,width/2, height/4);
+  }
+  
+}
+}*/
