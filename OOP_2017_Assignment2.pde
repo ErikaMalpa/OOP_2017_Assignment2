@@ -103,3 +103,36 @@ void startMenu()
     //add sound when clicked
   }
 }
+
+void keyPressed() 
+{
+  if (EnterName == false)
+  {
+    if (keyCode == BACKSPACE) 
+    {
+      if (UserName.length() > 0) 
+      {
+        UserName = UserName.substring(0, UserName.length()-1);
+      }
+    } else if (keyCode == DELETE) 
+    {
+      UserName = "";
+    } else if (keyCode != SHIFT && keyCode != BACKSPACE) 
+    {
+      UserName = UserName + key;
+    }
+    if (keyCode == ENTER)
+    {
+      EnterName = true;
+      print("true");
+    }
+    if (keyCode == ALT)
+    {
+      print("ALT");
+    }
+    if (keyCode == CONTROL)
+    {
+      print("CONTROL");
+    }
+  }
+}
