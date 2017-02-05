@@ -4,7 +4,6 @@ class Player extends Skeleton
   boolean shoot;
   float bulletCounter;
   int i;
-  PVector location;
   ArrayList<Bullet> bullets;
   
   Enemy[] enemy = new Enemy[10];
@@ -14,8 +13,6 @@ class Player extends Skeleton
     x = xx;
     y = yy;
     r = rr;
-    
-    location = new PVector(width/2, height/2);
     
     bullets = new ArrayList<Bullet>();
     
@@ -40,7 +37,7 @@ class Player extends Skeleton
     {
       if (shoot == true) 
       {
-        bullets.add( new Bullet(5));
+        bullets.add( new Bullet());
         shoot = false;
         bulletCounter = 0;
         println("Shoot");

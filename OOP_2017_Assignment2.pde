@@ -21,15 +21,16 @@ Gun gun;
 
 /*Sounds and Images used*/
 PImage bg;
-PImage bg2;
+PImage zombie;
 AudioPlayer BackSound;
 AudioPlayer gunshot;
 Minim minim;
 
 /*int float etc.*/
-String chosenName;
+String UserName;
 
 /*Others*/
+PFont font;
 
 void setup()
 {
@@ -45,6 +46,10 @@ void setup()
   
   /*Others*/
   
+  //fonts used
+  font = loadFont("BlackadderITC-Regular-48.vlw");
+  textFont(font,50);
+  
   //Backgrounf Music
   minim = new Minim(this);
   BackSound = minim.loadFile("BackSound.mp3");
@@ -53,6 +58,9 @@ void setup()
   
   //loading background Image
   bg = loadImage("BackGround.jpg");//http://img00.deviantart.net/5353/i/2013/276/f/6/ground_texture_06_by_bluecrystaleagle-d6p34ei.jpg
+  
+  //zombie bg 2
+  zombie = loadImage("zombie.jpg");
 }
 
 void draw()
@@ -71,24 +79,27 @@ void draw()
   player.display();
   gun.shoot();
 }
-/*
-void MenuDisplay()
+
+void startMenu()
 {
-  background (0);
+  background(zombie);
   textAlign(CENTER);
   
   if(EnterName == false)
   {
-    text("Enter your chosen EnterName : " + chosenName, width/2,height/-3);
-    text("Enter if you dare!", width/2,height/2);
+    stroke(255);
+    noFill();
+    text("Enter your EnterName if you dare: " + UserName, width/2, height/2);
+    //add sound when clicked
   }
   
   if(EnterName == true)
   {
-    text("Welcome " + chosenName + "to Zombie Attack", width/2, height/2);
-    text("Play", width/2, height/3);
-    text("Highscore" ,width/2, height/4);
+    stroke(255);
+    noFill();
+    textSize(50);
+    text("Welcome to the Zombie Blast Game " + UserName + "!", width/2, height/2 - 100);
+    text("Press alt to play",width/2, height/2 + 50);
+    //add sound when clicked
   }
-  
 }
-}*/
