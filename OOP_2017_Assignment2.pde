@@ -14,13 +14,12 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
-Boolean GameOver;
-
 /*Classes used*/
 Player player;
 Gun gun;
 ArrayList <Bullet> bullets = new ArrayList <Bullet> ();
 ArrayList <Enemy> enemies = new ArrayList <Enemy> ();
+//GameOver gameover;
 
 /*Sounds and Images used*/
 PImage bg;
@@ -54,7 +53,7 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
-  lives = 20;
+  lives = 1;
   
   /*Classes*/
   
@@ -63,6 +62,9 @@ void setup()
   
   //Gun
   gun = new Gun (width/2, height/2);
+  
+  //GameOver
+  //gameover = new GameOver();
   
   /*Others*/
   
@@ -106,9 +108,10 @@ void draw()
   textSize(40);
   fill(0);
   text("Player: " + UserName, 80,40);
-  text("Score: " + Score, 400, 40);
-  text("Lives: " + lives, 750, 40);
+  text("Score: " + Score, 250, 40);
+  text("Lives: " + lives, 450, 40);
   text("Money: £" + Money, 80, 885);
+  text("10 Lives for £200", 650, 40);
   popMatrix();
   
   for (int i=bullets.size()-1; i>=0; i--) {
@@ -133,20 +136,14 @@ void draw()
   }
   
   /* Classes */
+  /*if (lives <= 0)
+  {
+    GameOver = true;
+    gameover.display();
+  }*/
   player.update();
   player.display();
   gun.shoot();
-  
-  /*if(dist(player.x,player.y)<player.r))
-  {
-    print("collision");
-  }*/
-  
-  if (lives == 0)
-  {
-    GameOver = true;
-  }
-  
   }
 }
 
@@ -223,6 +220,11 @@ void keyPressed()
       zombieSound.play();
       print("true");
     }
+  }
+  if (keyCode  == UP)
+  {
+    lives = lives + 10;
+    Money = Money - 200;
   }
   if (keyCode == ALT)
     {
