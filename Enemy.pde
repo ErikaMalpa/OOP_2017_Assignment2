@@ -23,7 +23,7 @@ class Enemy extends Skeleton
   void update()
   {
      pos.add(vel);
-    if (pos.x < -d || pos.x > width+d|| pos.y < -d || pos.y > height+d || Collision()) {
+    if (pos.x < 0 + d || pos.x > 900 - d || pos.y < 50 + d || pos.y > 850 - d || Collision()) {
       enemies.remove(this);
    }
   }

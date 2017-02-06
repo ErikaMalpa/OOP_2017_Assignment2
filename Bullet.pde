@@ -10,7 +10,7 @@ class Bullet
     this.location = new PVector(width/2,height/2);
     this.x = mouseX;
     this.y = mouseY;
-    this.speed = 5;
+    this.speed = 15;
     this.rot = atan2 (y - location.y,x - location.x) / PI * 180;//to rotate
     
   }
