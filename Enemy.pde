@@ -13,7 +13,6 @@ class Enemy extends Skeleton
   
   void update()
   {
-    
   }
   
   void display()

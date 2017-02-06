@@ -68,6 +68,7 @@ void setup()
   BackSound = minim.loadFile("BackSound.mp3");
   gunshot = minim.loadFile("gunshot.wav");
   zombieSound = minim.loadFile("zsound.wav");
+  zombieDeath = minim.loadFile("zombieDeath.mp3");
   BackSound.loop();
   
   //loading background Image
@@ -87,45 +88,38 @@ void draw()
   {
   background(bg);
   
-  pushMatrix(); //rect up and down
+  pushMatrix();//rect up and down
   noStroke();
   fill(255);
   rect(1,1,900,50);
   rect(1,850,900,50);
   popMatrix();
   
-  pushMatrix();
-  textSize(40);
-  fill(0);
-  text("Player: " + UserName, 80,40);
-  popMatrix();
-  
-  /* Classes */
-  player.update();
-  player.display();
-  gun.shoot();
-  
-  //Bullets
   for (int i=bullets.size()-1; i>=0; i--) {
     Bullet b = bullets.get(i);
     b.update();
     b.display();
   }
   
-  //Enemies
   for (int i=enemies.size()-1; i>=0; i--) {
     Enemy e = enemies.get(i);
     e.update();
     e.display();
   }
   
-  //adding bullets
-  if (mousePressed && millis() - lastShot > 250) {
+  addEnemy(50);
+  
+  if (mousePressed && millis() - lastShot > 500) {
     addBullet();
     lastShot = millis();
     gunshot.rewind();
     gunshot.play();
   }
+  
+  /* Classes */
+  player.update();
+  player.display();
+  gun.shoot();
   
   /*if(dist(player.x,player.y)<player.r))
   {
@@ -170,7 +164,6 @@ void startMenu()
     stroke(255);
     noFill();
     text("Enter your EnterName if you dare: " + UserName, x,y);
-    //add sound when clicked
   }
   
   if(EnterName == true)
@@ -181,7 +174,6 @@ void startMenu()
     text("Welcome to the Zombie Blast Game " + UserName, x,y);
     text("Alt to play",x, y + 50);
     text("Ctrl for HighScore",x, y + 100);
-    //add sound when clicked
   }
 }
 
