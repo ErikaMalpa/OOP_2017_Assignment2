@@ -39,7 +39,6 @@ int lastShot;
 PFont font;
 PVector x;
 PVector y;
-PVector rand;
 
 void setup()
 {
@@ -49,7 +48,6 @@ void setup()
   Begin = false;
   x = new PVector(width/2, height/2);
   y = new PVector();
-  rand = new PVector(random(0,1), random(1,-1));
   
   /*Classes*/
   
@@ -138,7 +136,7 @@ void draw()
 
 void addEnemy(int x) {
   if (frameCount % x == 0) {
-    enemies.add(new Enemy(random(10,890), random(50,300), rand, 25));
+    enemies.add(new Enemy(random(10,890), random(50,300), new PVector(0,1), 25));
   }
 }
 
