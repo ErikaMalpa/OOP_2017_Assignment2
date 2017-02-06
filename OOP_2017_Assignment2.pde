@@ -14,6 +14,7 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
+
 /*Classes used*/
 Player player;
 Gun gun;
@@ -28,6 +29,7 @@ AudioPlayer BackSound;
 AudioPlayer gunshot;
 AudioPlayer zombieSound;
 AudioPlayer zombieDeath;
+AudioPlayer moneyN;//http://www.fromtexttospeech.com/
 Minim minim;
 
 /*Variables*/
@@ -78,6 +80,7 @@ void setup()
   gunshot = minim.loadFile("gunshot.wav");
   zombieSound = minim.loadFile("zsound.wav");
   zombieDeath = minim.loadFile("zombieDeath.mp3");
+  moneyN = minim.loadFile("moneyneeded.mp3");
   BackSound.loop();
   
   //loading background Image
@@ -223,8 +226,16 @@ void keyPressed()
   }
   if (keyCode  == UP)
   {
-    lives = lives + 10;
-    Money = Money - 200;
+    if (Money >= 200)
+    {
+      lives = lives + 10;
+      Money = Money - 200;
+    }
+    else
+    {
+      moneyN.rewind();
+      moneyN.play();
+    }
   }
   if (keyCode == ALT)
     {
