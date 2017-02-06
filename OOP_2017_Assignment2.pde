@@ -143,6 +143,11 @@ void draw()
   player.update();
   player.display();
   gun.shoot();
+  
+  if(dist(player.x,player.y)<player.r))
+  {
+    print("collision");
+  }
   }
 }
 
