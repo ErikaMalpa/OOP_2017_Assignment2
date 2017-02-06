@@ -1,41 +1,32 @@
 class Enemy extends Skeleton
 {
-  float x, y, r, a, speedX, speedY;
+  float r, a;
+  PVector pos, vel;
+  float d;
   
-  Enemy(float xx, float yy, float rr)
+  Enemy(float x, float y,PVector vel, float dd)
   {
-    x = xx;
-    y = yy;
-    r = rr;
-    
-    speedX = random(0.5);
-    speedY = random(0.5);
+    pos = new PVector(x,y);
+    this.d = dd;
+    this.vel = vel.get();
   }
   
   void update()
   {
-    x += speedX;
-    y += speedY;
-    
-    a= r/2;
-    
-    if ( (x<a) || (x>width-a)){ 
-      speedX = -speedX; 
-    }  
-    
-    if( (y<a) || (y>height-a)) { 
-      speedY = -speedY;  
-    }
+    pos.add(vel);
+    if (pos.x < -d || pos.x > width+d|| pos.y < -d || pos.y > height+d) {
+      enemies.remove(this);
+   }
   }
   
   void display()
   {
     pushMatrix();
     fill(#F5E2B9);
-    ellipse(x, y, r,r);
+    ellipse(pos.x, pos.y, d,d);
     stroke(0);
-    line(x - 15 ,y - 10,x,y - 10);
-    line(x + 5,y + 10,x,y + 25);
+    line(pos.x - 15 ,pos.y - 10,pos.x,pos.y - 10);
+    line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);
     popMatrix();
   }
 }
