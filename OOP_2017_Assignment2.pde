@@ -60,7 +60,7 @@ void setup()
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
   lives = 10;
-  Amo = 13;
+  Amo = 15;
   
   /*Classes*/
   
@@ -159,17 +159,12 @@ void draw()
     lastShot = millis();
     gunshot.rewind();
     gunshot.play();
-    Amo = Amo - 1;
+    Amo--;
     }
   }
   else
   {
     print("noAmmo");
-  }
-  
-  if(Money >= 100)
-  {
-    Amo = Amo + 20;
   }
   
   /* Classes */
