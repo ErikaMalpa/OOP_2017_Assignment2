@@ -11,10 +11,19 @@ class Enemy extends Skeleton
     this.vel = vel.get();
   }
   
+  boolean Collision() {
+    for (Bullet b : bullets) {
+     if (pos.dist(b.location) < d/2) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   void update()
   {
      pos.add(vel);
-    if (pos.x < -d || pos.x > width+d|| pos.y < -d || pos.y > height+d) {
+    if (pos.x < -d || pos.x > width+d|| pos.y < -d || pos.y > height+d || Collision()) {
       enemies.remove(this);
    }
   }
