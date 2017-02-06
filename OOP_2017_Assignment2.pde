@@ -14,10 +14,14 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
+Boolean HScore;
+boolean shoot;
 
 /*Classes used*/
 Player player;
 Gun gun;
+ArrayList<Bullet> bullets;
+Enemy[] enemy = new Enemy[10];
 
 /*Sounds and Images used*/
 PImage bg;
@@ -26,8 +30,9 @@ AudioPlayer BackSound;
 AudioPlayer gunshot;
 Minim minim;
 
-/*int float etc.*/
+/*Variables*/
 String UserName;
+float bulletCounter;
 
 /*Others*/
 PFont font;
@@ -46,6 +51,15 @@ void setup()
   
   //Gun
   gun = new Gun (width/2, height/2);
+  
+  //Bullets
+  bullets = new ArrayList<Bullet>();
+  
+  //Enemy
+    for( int i = 0; i < enemy.length; i++)
+    {
+      enemy[i] = new Enemy(random(50,800),random(50,800), 20);
+    }
   
   /*Others*/
   
@@ -83,6 +97,45 @@ void draw()
   rect(1,850,900,50);
   popMatrix();
   
+  //Enemy//
+  for( int i = 0; i < enemy.length; i++)
+    {
+      enemy[i].display();
+      enemy[i].update();
+    }
+    
+    //Bullet//
+    
+    if (mousePressed == true) 
+    {
+      if (shoot == true) 
+      {
+        bullets.add( new Bullet());
+        shoot = false;
+        bulletCounter = 0;
+        println("Shoot");
+        gunshot.rewind();
+        gunshot.play();
+      }
+    }
+    
+    if (shoot == false) 
+    {
+      bulletCounter ++;
+      if( bulletCounter == 10)
+      {
+        shoot = true;
+      }
+    }
+    
+    for (int i = bullets.size()-1; i >= 0; i--) 
+    {
+      Bullet bullet = bullets.get(i);
+      bullet.update();
+    }
+  
+  //Bullets//
+  
   /* Classes */
   player.update();
   player.display();
@@ -95,11 +148,16 @@ void startMenu()
   background(zombie);
   textAlign(CENTER);
   
+  int x, y;
+  
+  x = width/2;
+  y = height/2;
+  
   if(EnterName == false)
   {
     stroke(255);
     noFill();
-    text("Enter your EnterName if you dare: " + UserName, width/2, height/2);
+    text("Enter your EnterName if you dare: " + UserName, x,y);
     //add sound when clicked
   }
   
@@ -108,8 +166,9 @@ void startMenu()
     stroke(255);
     noFill();
     textSize(50);
-    text("Welcome to the Zombie Blast Game " + UserName + "!", width/2, height/2 - 100);
-    text("Press alt to play",width/2, height/2 + 50);
+    text("Welcome to the Zombie Blast Game " + UserName, x,y);
+    text("Alt to play",width/2, height/2 + 50);
+    text("Ctrl for HighScore",width/2, height/2 + 100);
     //add sound when clicked
   }
 }
@@ -145,5 +204,12 @@ void keyPressed()
     if (keyCode == CONTROL)
     {
       print("CONTROL");
+      HScore = true;
     }
+}
+
+void HighScore()
+{
+  background(zombie);
+  
 }
