@@ -14,12 +14,10 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
-boolean shoot;
 
 /*Classes used*/
 Player player;
 Gun gun;
-ArrayList<Bullet> bullets;
 Enemy[] enemy = new Enemy[10];
 
 /*Sounds and Images used*/
@@ -32,7 +30,6 @@ Minim minim;
 
 /*Variables*/
 String UserName;
-float bulletCounter;
 int speed;
 
 /*Others*/
@@ -52,9 +49,6 @@ void setup()
   
   //Gun
   gun = new Gun (width/2, height/2);
-  
-  //Bullets
-  bullets = new ArrayList<Bullet>();
   
   //Enemy
     for( int i = 0; i < enemy.length; i++)
@@ -109,33 +103,7 @@ void draw()
 
     //Bullets Start//
     
-    if (mousePressed == true) 
-    {
-      if (shoot == true) 
-      {
-        bullets.add( new Bullet());
-        shoot = false;
-        bulletCounter = 0;
-        println("Shoot");
-        gunshot.rewind();
-        gunshot.play();
-      }
-    }
     
-    if (shoot == false) 
-    {
-      bulletCounter ++;
-      if( bulletCounter == 10)
-      {
-        shoot = true;
-      }
-    }
-    
-    for (int i = bullets.size()-1; i >= 0; i--) 
-    {
-      Bullet bullet = bullets.get(i);
-      bullet.update();
-    }
   
   //Bullets End//
   
@@ -144,10 +112,10 @@ void draw()
   player.display();
   gun.shoot();
   
-  if(dist(player.x,player.y)<player.r))
+  /*if(dist(player.x,player.y)<player.r))
   {
     print("collision");
-  }
+  }*/
   }
 }
 
