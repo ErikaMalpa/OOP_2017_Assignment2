@@ -33,6 +33,7 @@ Minim minim;
 /*Variables*/
 String UserName;
 float bulletCounter;
+int speed;
 
 /*Others*/
 PFont font;
@@ -64,8 +65,8 @@ void setup()
   /*Others*/
   
   //fonts used
-  font = loadFont("BlackadderITC-Regular-48.vlw");
-  textFont(font,50);
+  font = loadFont("BodoniMTPosterCompressed-48.vlw");
+  textFont(font,80);
   
   //Backgrounf Music
   minim = new Minim(this);
@@ -143,7 +144,6 @@ void draw()
   gun.shoot();
   }
 }
-int speed;
 
 void startMenu()
 {
@@ -154,13 +154,13 @@ void startMenu()
   
   x = width/2;
   y = height/2;
-  x = x + speed;
+  y = y + speed;
   
-  if( x > 445)
+  if( y > 445)
   {
     speed = -5;
   }
-  if (x < 455)
+  if (y < 455)
   {
     speed = 5;
   }
