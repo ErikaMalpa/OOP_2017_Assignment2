@@ -15,6 +15,7 @@ class Enemy extends Skeleton
     for (Bullet b : bullets) {
      if (pos.dist(b.location) < d/2) {
         Score = Score + 5;
+        Money = Money + 10;
         return true;
       }
     }

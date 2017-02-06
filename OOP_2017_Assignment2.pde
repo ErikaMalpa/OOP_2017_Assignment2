@@ -14,6 +14,7 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
+Boolean GameOver;
 
 /*Classes used*/
 Player player;
@@ -36,6 +37,7 @@ int speed;
 int lastShot;
 int Score;
 int lives;
+int Money;
 
 /*Others*/
 PFont font;
@@ -106,6 +108,7 @@ void draw()
   text("Player: " + UserName, 80,40);
   text("Score: " + Score, 400, 40);
   text("Lives: " + lives, 750, 40);
+  text("Money: £" + Money, 80, 885);
   popMatrix();
   
   for (int i=bullets.size()-1; i>=0; i--) {
@@ -138,6 +141,12 @@ void draw()
   {
     print("collision");
   }*/
+  
+  if (lives == 0)
+  {
+    GameOver = true;
+  }
+  
   }
 }
 
