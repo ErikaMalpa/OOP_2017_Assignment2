@@ -34,6 +34,7 @@ Minim minim;
 String UserName;
 int speed;
 int lastShot;
+int Score;
 
 /*Others*/
 PFont font;
@@ -101,6 +102,7 @@ void draw()
   textSize(40);
   fill(0);
   text("Player: " + UserName, 80,40);
+  text("Score: " + Score, 400, 40);
   popMatrix();
   
   for (int i=bullets.size()-1; i>=0; i--) {

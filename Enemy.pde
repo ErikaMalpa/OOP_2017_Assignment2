@@ -14,6 +14,8 @@ class Enemy extends Skeleton
   boolean Collision() {
     for (Bullet b : bullets) {
      if (pos.dist(b.location) < d/2) {
+       Score = Score + 5;
+       
         return true;
       }
     }
@@ -23,7 +25,7 @@ class Enemy extends Skeleton
   void update()
   {
      pos.add(vel);
-    if (pos.x < 0 + d || pos.x > 900 - d || pos.y < 50 + d || pos.y > 850 - d || Collision()) {
+    if (pos.x < 0 || pos.x > 900 - d || pos.y < 50 + d || pos.y > 850 - d || Collision()) {
       enemies.remove(this);
    }
   }
@@ -38,4 +40,4 @@ class Enemy extends Skeleton
     line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);
     popMatrix();
   }
-}
+};
