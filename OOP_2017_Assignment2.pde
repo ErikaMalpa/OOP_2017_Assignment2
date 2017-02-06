@@ -86,11 +86,17 @@ void draw()
   {
   background(bg);
   
-  pushMatrix();
+  pushMatrix(); //rect up and down
   noStroke();
-  fill(0);
+  fill(255);
   rect(1,1,900,50);
   rect(1,850,900,50);
+  popMatrix();
+  
+  pushMatrix();
+  textSize(40);
+  fill(0);
+  text("Player: " + UserName, 80,40);
   popMatrix();
   
   //Enemy start//
