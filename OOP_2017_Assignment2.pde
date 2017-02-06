@@ -20,7 +20,7 @@ Player player;
 Gun gun;
 ArrayList <Bullet> bullets = new ArrayList <Bullet> ();
 ArrayList <Enemy> enemies = new ArrayList <Enemy> ();
-//GameOver gameover;
+GameOver gameover;
 
 /*Sounds and Images used*/
 PImage bg;
@@ -31,6 +31,7 @@ AudioPlayer zombieSound;
 AudioPlayer zombieDeath;
 AudioPlayer moneyN;//http://www.fromtexttospeech.com/
 AudioPlayer lifedanger;
+AudioPlayer gamefinish;
 Minim minim;
 
 /*Variables*/
@@ -56,7 +57,7 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
-  lives = 10;
+  lives = 1;
   
   /*Classes*/
   
@@ -67,7 +68,7 @@ void setup()
   gun = new Gun (width/2, height/2);
   
   //GameOver
-  //gameover = new GameOver();
+  gameover = new GameOver();
   
   /*Others*/
   
@@ -83,6 +84,7 @@ void setup()
   zombieDeath = minim.loadFile("zombieDeath.mp3");
   moneyN = minim.loadFile("moneyneeded.mp3");
   lifedanger = minim.loadFile("lifeindanger.mp3");
+  gamefinish = minim.loadFile("gameover.mp3");
   BackSound.loop();
   
   //loading background Image
@@ -137,6 +139,11 @@ void draw()
     e.display();
   }
   
+  if (lives <= 0)
+  {
+    gameover.display();
+  }
+  
   addEnemy(50);
   
   if (mousePressed && millis() - lastShot > 500) {
@@ -147,11 +154,6 @@ void draw()
   }
   
   /* Classes */
-  /*if (lives <= 0)
-  {
-    GameOver = true;
-    gameover.display();
-  }*/
   player.update();
   player.display();
   gun.shoot();
