@@ -32,6 +32,7 @@ AudioPlayer zombieDeath;
 AudioPlayer moneyN;//http://www.fromtexttospeech.com/
 AudioPlayer lifedanger;
 AudioPlayer gamefinish;
+AudioPlayer noammo;
 Minim minim;
 
 /*Variables*/
@@ -41,6 +42,7 @@ int lastShot;
 int Score;
 int lives;
 int Money;
+int Amo;
 
 /*Others*/
 PFont font;
@@ -57,7 +59,8 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
-  lives = 1;
+  lives = 10;
+  Amo = 13;
   
   /*Classes*/
   
@@ -85,6 +88,7 @@ void setup()
   moneyN = minim.loadFile("moneyneeded.mp3");
   lifedanger = minim.loadFile("lifeindanger.mp3");
   gamefinish = minim.loadFile("gameover.mp3");
+  noammo = minim.loadFile("noammo.mp3");
   BackSound.loop();
   
   //loading background Image
@@ -119,6 +123,8 @@ void draw()
   text("Lives: " + lives, 450, 40);
   text("Money: £" + Money, 80, 885);
   text("10 Lives for £200", 650, 40);
+  text("Ammo: " + Amo, 250, 885);
+  text("20 Ammo for £50", 450, 885);
   popMatrix();
   
   if( lives == 5)
@@ -146,11 +152,24 @@ void draw()
   
   addEnemy(50);
   
-  if (mousePressed && millis() - lastShot > 500) {
+  if(Amo >= 1)
+  {
+    if (mousePressed && millis() - lastShot > 500) {
     addBullet();
     lastShot = millis();
     gunshot.rewind();
     gunshot.play();
+    Amo = Amo - 1;
+    }
+  }
+  else
+  {
+    print("noAmmo");
+  }
+  
+  if(Money >= 100)
+  {
+    Amo = Amo + 20;
   }
   
   /* Classes */
@@ -240,6 +259,19 @@ void keyPressed()
     {
       lives = lives + 10;
       Money = Money - 200;
+    }
+    else
+    {
+      moneyN.rewind();
+      moneyN.play();
+    }
+  }
+  if (keyCode  == DOWN)
+  {
+    if (Money >= 50)
+    {
+      Amo = Amo + 20;
+      Money = Money - 50;
     }
     else
     {
