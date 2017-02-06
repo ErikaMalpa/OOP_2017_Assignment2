@@ -14,8 +14,16 @@ class Enemy extends Skeleton
   boolean Collision() {
     for (Bullet b : bullets) {
      if (pos.dist(b.location) < d/2) {
-       Score = Score + 5;
-       
+        Score = Score + 5;
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  boolean Invaded() {
+    for (Enemy e : enemies) {
+     if (pos.dist(e.pos) < 25/2) {
         return true;
       }
     }
@@ -27,6 +35,9 @@ class Enemy extends Skeleton
      pos.add(vel);
     if (pos.x < 0 || pos.x > 900 - d || pos.y < 50 + d || pos.y > 850 - d || Collision()) {
       enemies.remove(this);
+   }
+   if (pos.x > 900 - d || pos.y > 824 && Invaded()) {
+     lives--;
    }
   }
   

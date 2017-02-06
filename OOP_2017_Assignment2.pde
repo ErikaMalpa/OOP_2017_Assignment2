@@ -35,6 +35,7 @@ String UserName;
 int speed;
 int lastShot;
 int Score;
+int lives;
 
 /*Others*/
 PFont font;
@@ -51,6 +52,7 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
+  lives = 20;
   
   /*Classes*/
   
@@ -103,6 +105,7 @@ void draw()
   fill(0);
   text("Player: " + UserName, 80,40);
   text("Score: " + Score, 400, 40);
+  text("Lives: " + lives, 750, 40);
   popMatrix();
   
   for (int i=bullets.size()-1; i>=0; i--) {
@@ -186,7 +189,7 @@ void startMenu()
     text("Ctrl for HighScore",x, y + 100);
   }
 }
-
+  
 void keyPressed() 
 {
   if (EnterName == false)
