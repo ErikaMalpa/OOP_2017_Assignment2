@@ -33,6 +33,7 @@ class Enemy extends Skeleton
     pushMatrix();
     fill(#F5E2B9);
     ellipse(x, y, r,r);
+    stroke(0);
     popMatrix();
   }
 }

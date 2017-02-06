@@ -97,14 +97,15 @@ void draw()
   rect(1,850,900,50);
   popMatrix();
   
-  //Enemy//
+  //Enemy start//
   for( int i = 0; i < enemy.length; i++)
     {
       enemy[i].display();
       enemy[i].update();
     }
-    
-    //Bullet//
+    //Enemy end//
+
+    //Bullets Start//
     
     if (mousePressed == true) 
     {
@@ -134,7 +135,7 @@ void draw()
       bullet.update();
     }
   
-  //Bullets//
+  //Bullets End//
   
   /* Classes */
   player.update();
