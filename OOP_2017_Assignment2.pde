@@ -152,7 +152,7 @@ void draw()
 
 void addEnemy(int x) {
   if (frameCount % x == 0) {
-    enemies.add(new Enemy(random(10,850), random(50,300), rand, 25));
+    enemies.add(new Enemy(random(10,450), random(50,200), rand, 25));
   }
 }
 
