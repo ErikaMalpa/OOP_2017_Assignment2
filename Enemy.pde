@@ -52,4 +52,4 @@ class Enemy extends Skeleton
     line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);
     popMatrix();
   }
-};
+}

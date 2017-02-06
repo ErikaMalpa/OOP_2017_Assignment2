@@ -287,4 +287,16 @@ void keyPressed()
       zombieSound.rewind();
       zombieSound.play();
     }
+    //to pause game
+   if (keyCode == 'P')
+   {
+     if(looping)
+     {
+       noLoop();
+     }
+     else
+     {
+       loop();
+     }
+   }
 }
