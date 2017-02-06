@@ -95,6 +95,12 @@ void draw()
   rect(1,850,900,50);
   popMatrix();
   
+   pushMatrix();
+  textSize(40);
+  fill(0);
+  text("Player: " + UserName, 80,40);
+  popMatrix();
+  
   for (int i=bullets.size()-1; i>=0; i--) {
     Bullet b = bullets.get(i);
     b.update();
