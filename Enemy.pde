@@ -34,6 +34,8 @@ class Enemy extends Skeleton
     fill(#F5E2B9);
     ellipse(x, y, r,r);
     stroke(0);
+    line(x - 15 ,y - 10,x,y - 10);
+    line(x + 5,y + 10,x,y + 25);
     popMatrix();
   }
 }

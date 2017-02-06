@@ -143,6 +143,7 @@ void draw()
   gun.shoot();
   }
 }
+int speed;
 
 void startMenu()
 {
@@ -153,6 +154,16 @@ void startMenu()
   
   x = width/2;
   y = height/2;
+  x = x + speed;
+  
+  if( x > 445)
+  {
+    speed = -5;
+  }
+  if (x < 455)
+  {
+    speed = 5;
+  }
   
   if(EnterName == false)
   {
@@ -168,8 +179,8 @@ void startMenu()
     noFill();
     textSize(50);
     text("Welcome to the Zombie Blast Game " + UserName, x,y);
-    text("Alt to play",width/2, height/2 + 50);
-    text("Ctrl for HighScore",width/2, height/2 + 100);
+    text("Alt to play",x, y + 50);
+    text("Ctrl for HighScore",x, y + 100);
     //add sound when clicked
   }
 }
