@@ -219,7 +219,8 @@ void startMenu()
     textSize(50);
     text("Welcome to the Zombie Blast Game " + UserName, x,y);
     text("Alt to play",x, y + 50);
-    text("Ctrl for HighScore",x, y + 100);
+    //text("Ctrl for HighScore",x, y + 100);
+    text("Q to quit",x, y + 100);
   }
 }
   
@@ -298,5 +299,9 @@ void keyPressed()
      {
        loop();
      }
+   }
+   if (keyCode == 'Q')
+   {
+     exit();
    }
 }
