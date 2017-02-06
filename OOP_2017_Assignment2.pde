@@ -14,7 +14,6 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
-Boolean HScore;
 boolean shoot;
 
 /*Classes used*/
@@ -28,6 +27,7 @@ PImage bg;
 PImage zombie;
 AudioPlayer BackSound;
 AudioPlayer gunshot;
+AudioPlayer zombieSound;
 Minim minim;
 
 /*Variables*/
@@ -72,6 +72,7 @@ void setup()
   minim = new Minim(this);
   BackSound = minim.loadFile("BackSound.mp3");
   gunshot = minim.loadFile("gunshot.wav");
+  zombieSound = minim.loadFile("zsound.wav");
   BackSound.loop();
   
   //loading background Image
@@ -205,6 +206,8 @@ void keyPressed()
     if (keyCode == ENTER)
     {
       EnterName = true;
+      zombieSound.rewind();
+      zombieSound.play();
       print("true");
     }
   }
@@ -212,16 +215,13 @@ void keyPressed()
     {
       print("ALT");
       Begin = true;
+      zombieSound.rewind();
+      zombieSound.play();
     }
     if (keyCode == CONTROL)
     {
       print("CONTROL");
-      HScore = true;
+      zombieSound.rewind();
+      zombieSound.play();
     }
-}
-
-void HighScore()
-{
-  background(zombie);
-  
 }
