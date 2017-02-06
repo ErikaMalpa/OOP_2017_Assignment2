@@ -18,7 +18,8 @@ Boolean Begin;
 /*Classes used*/
 Player player;
 Gun gun;
-Enemy[] enemy = new Enemy[10];
+ArrayList <Bullet> bullets = new ArrayList <Bullet> ();
+ArrayList <Enemy> enemies = new ArrayList <Enemy> ();
 
 /*Sounds and Images used*/
 PImage bg;
@@ -26,14 +27,18 @@ PImage zombie;
 AudioPlayer BackSound;
 AudioPlayer gunshot;
 AudioPlayer zombieSound;
+AudioPlayer zombieDeath;
 Minim minim;
 
 /*Variables*/
 String UserName;
 int speed;
+int lastShot;
 
 /*Others*/
 PFont font;
+PVector x;
+PVector y;
 
 void setup()
 {
@@ -41,6 +46,8 @@ void setup()
   
   EnterName = false;
   Begin = false;
+  x = new PVector(width/2, height/2);
+  y = new PVector();
   
   /*Classes*/
   
@@ -49,12 +56,6 @@ void setup()
   
   //Gun
   gun = new Gun (width/2, height/2);
-  
-  //Enemy
-    for( int i = 0; i < enemy.length; i++)
-    {
-      enemy[i] = new Enemy(random(50,800),random(50,800), 20);
-    }
   
   /*Others*/
   
@@ -99,30 +100,49 @@ void draw()
   text("Player: " + UserName, 80,40);
   popMatrix();
   
-  //Enemy start//
-  for( int i = 0; i < enemy.length; i++)
-    {
-      enemy[i].display();
-      enemy[i].update();
-    }
-    //Enemy end//
-
-    //Bullets Start//
-    
-    
-  
-  //Bullets End//
-  
   /* Classes */
   player.update();
   player.display();
   gun.shoot();
+  
+  //Bullets
+  for (int i=bullets.size()-1; i>=0; i--) {
+    Bullet b = bullets.get(i);
+    b.update();
+    b.display();
+  }
+  
+  //Enemies
+  for (int i=enemies.size()-1; i>=0; i--) {
+    Enemy e = enemies.get(i);
+    e.update();
+    e.display();
+  }
+  
+  //adding bullets
+  if (mousePressed && millis() - lastShot > 250) {
+    addBullet();
+    lastShot = millis();
+    gunshot.rewind();
+    gunshot.play();
+  }
   
   /*if(dist(player.x,player.y)<player.r))
   {
     print("collision");
   }*/
   }
+}
+
+void addEnemy(int x) {
+  if (frameCount % x == 0) {
+    enemies.add(new Enemy(random(10,890), random(50,300), new PVector(0,10), 25));
+  }
+}
+
+void addBullet() {
+  y.normalize();
+  bullets.add(new Bullet(x,y));
 }
 
 void startMenu()

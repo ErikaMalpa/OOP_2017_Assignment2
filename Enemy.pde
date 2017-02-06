@@ -13,10 +13,7 @@ class Enemy extends Skeleton
   
   void update()
   {
-    pos.add(vel);
-    if (pos.x < -d || pos.x > width+d|| pos.y < -d || pos.y > height+d) {
-      enemies.remove(this);
-   }
+    
   }
   
   void display()
