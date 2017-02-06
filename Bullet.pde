@@ -17,6 +17,9 @@ class Bullet
   
   void update()
   {
+    if (location.x < 0 || location.x > width || location.y < 0 || location.y > height) {
+      bullets.remove(this);
+    }
   }
   
   void display()
