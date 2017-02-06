@@ -30,6 +30,7 @@ AudioPlayer gunshot;
 AudioPlayer zombieSound;
 AudioPlayer zombieDeath;
 AudioPlayer moneyN;//http://www.fromtexttospeech.com/
+AudioPlayer lifedanger;
 Minim minim;
 
 /*Variables*/
@@ -55,7 +56,7 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
-  lives = 1;
+  lives = 10;
   
   /*Classes*/
   
@@ -81,6 +82,7 @@ void setup()
   zombieSound = minim.loadFile("zsound.wav");
   zombieDeath = minim.loadFile("zombieDeath.mp3");
   moneyN = minim.loadFile("moneyneeded.mp3");
+  lifedanger = minim.loadFile("lifeindanger.mp3");
   BackSound.loop();
   
   //loading background Image
@@ -116,6 +118,12 @@ void draw()
   text("Money: £" + Money, 80, 885);
   text("10 Lives for £200", 650, 40);
   popMatrix();
+  
+  if( lives == 5)
+  {
+    lifedanger.rewind();
+    lifedanger.play();
+  }
   
   for (int i=bullets.size()-1; i>=0; i--) {
     Bullet b = bullets.get(i);
