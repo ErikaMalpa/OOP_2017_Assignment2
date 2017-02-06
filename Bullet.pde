@@ -4,7 +4,7 @@ class Bullet
   PVector location; //location of the bullet
   int i;
   
-  Bullet()
+  Bullet(PVector location, PVector vel)
   {
     this.r = 5;
     this.location = new PVector(width/2,height/2);
@@ -12,9 +12,14 @@ class Bullet
     this.y = mouseY;
     this.speed = 5;
     this.rot = atan2 (y - location.y,x - location.x) / PI * 180;//to rotate
+    
   }
   
   void update()
+  {
+  }
+  
+  void display()
   {
     pushMatrix();
     //to move the bullet
