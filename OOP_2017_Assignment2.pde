@@ -47,6 +47,7 @@ PImage bg;//background image of the game
 PImage bullet;//bullet
 PImage zombie;//background image at the menu and enter name
 PImage heart;//heart
+PImage zombieBod;
 AudioPlayer BackSound;//the background song
 AudioPlayer gunshot;//gunshot sound
 AudioPlayer zombieSound;//when player press the chosen keyCodes this will play and also when they succse going past the player
@@ -134,6 +135,9 @@ void setup()
   
   //bullet
   bullet = loadImage("bullet.png");
+  
+  //zombie head
+  zombieBod = loadImage("zombieW.png");//http://www.pngall.com/wp-content/uploads/2016/07/Zombie-Transparent.png
 }
 
 void draw()
@@ -282,7 +286,7 @@ void draw()
 //To add enemy
 void addEnemy(int x) {
   if (frameCount % x == 0) {
-    enemies.add(new Enemy(random(10,450), random(50,200), rand, 25));
+    enemies.add(new Enemy(random(10,450), random(50,200), rand, 50));
   }
 }
 

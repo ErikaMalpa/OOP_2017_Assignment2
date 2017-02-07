@@ -51,8 +51,8 @@ class Enemy extends Skeleton
   void update()
   {
      pos.add(vel);
-     /*Collision for bullets and enemy*/
-    if (pos.x < 0 || pos.x > 900 - r || pos.y < 20 + r || pos.y > 850 - r || Collision()) {
+     /*Collision for bullets and enemy or sides*/
+    if (pos.x < 0 || pos.x > 900 - r || pos.y < r || pos.y > 850 - r || Collision()) {
       enemies.remove(this);//removes enemies on collision
       zombieSuccess.rewind();
       zombieSuccess.play();
@@ -79,10 +79,10 @@ class Enemy extends Skeleton
   {
     pushMatrix();
     fill(#F5E2B9);
-    ellipse(pos.x, pos.y, r,r);
+    image(zombieBod,pos.x, pos.y, r,r);
     stroke(0);
-    line(pos.x - 15 ,pos.y - 10,pos.x,pos.y - 10);
-    line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);
+    //line(pos.x - 15 ,pos.y - 10,pos.x,pos.y - 10);
+    //line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);
     popMatrix();
   }
 }
