@@ -31,14 +31,29 @@ class Enemy extends Skeleton
     return false;
   }
   
+  boolean Hurt()
+  {
+    if(dist(pos.x,pos.y,player.x,player.y) <player.r)
+    {
+      return true;
+    }
+    return false;
+  }
+  
   void update()
   {
      pos.add(vel);
-    if (pos.x < 0 || pos.x > 900 - d || pos.y < 50 + d || pos.y > 850 - d || Collision()) {
+    if (pos.x < 0 || pos.x > 900 - d || pos.y < 20 + d || pos.y > 850 - d || Collision()) {
       enemies.remove(this);
    }
    if (pos.x > 900 - d || pos.y > 824 && Invaded()) {
      lives--;
+   }
+   if (Hurt())
+   {
+     enemies.remove(this);
+     lives--;
+     
    }
   }
   

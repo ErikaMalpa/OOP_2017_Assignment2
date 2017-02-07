@@ -71,7 +71,7 @@ void setup()
   lives = 1000;
   Amo = 15;
   time = millis();
-  seconds = 40000;
+  seconds = 60000;
   level = 150;
   
   /*Classes*/
