@@ -68,11 +68,12 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
-  lives = 1000;
-  Amo = 15;
+  lives = 10;
+  Amo = 20;
   time = millis();
   seconds = 60000;
   level = 150;
+  UserName = " ";
   
   /*Classes*/
   
@@ -142,7 +143,7 @@ void draw()
   text("Ammo: " + Amo, 600, 40);
   text("Time: " + Oras2, 800, 40);
   text("Money: £" + Money, 80, 885);
-  text("10         £200", 290, 885);
+  text("5         £200", 290, 885);
   image(heart, 260, 860);
   text("20       £50", 480, 885);
   image(bullet, 460, 855);
@@ -276,7 +277,7 @@ void startMenu()
   {
     stroke(255);
     noFill();
-    text("Enter your EnterName if you dare: " + UserName, x,y);
+    text("Enter your EnterName if you dare:" + UserName, x,y);
   }
   
   if(EnterName == true)
@@ -320,7 +321,7 @@ void keyPressed()
   {
     if (Money >= 200)
     {
-      lives = lives + 10;
+      lives = lives + 5;
       Money = Money - 200;
     }
     else
