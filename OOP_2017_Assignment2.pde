@@ -37,6 +37,7 @@ Minim minim;
 
 /*Variables*/
 String Oras;
+String Oras2;
 String UserName;
 int speed;
 int lastShot;
@@ -47,6 +48,8 @@ int Amo;
 int time;
 int seconds;
 int level;
+int time2;
+int seconds2;
 
 /*Others*/
 PFont font;
@@ -66,7 +69,7 @@ void setup()
   lives = 1000;
   Amo = 15;
   time = millis();
-  seconds = 5000;
+  seconds = 30000;
   level = 150;
   
   /*Classes*/
@@ -132,9 +135,35 @@ void draw()
   text("10 Lives for £200", 650, 40);
   text("Ammo: " + Amo, 250, 885);
   text("20 Ammo for £50", 450, 885);  
+  text("Time: " + Oras2, 650, 885);
   popMatrix();
   
   println(level);
+  
+    if(level == 150)
+  {
+    text("Level 1",750, 885);
+  }
+  if(level == 120)
+  {
+    text("Level 2",750, 885);
+  }
+  if(level == 90)
+  {
+    text("Level 3",750, 885);
+  }
+  if(level == 60)
+  {
+    text("Level 4",750, 885);
+  }
+  if(level == 30)
+  {
+    text("Level 5",750, 885);
+  }
+  if(level == 0)
+  {
+    text("Finished",750, 885);
+  }
   
   //first time
   if(millis() - time > seconds)
@@ -142,6 +171,13 @@ void draw()
     Oras = nf(int(millis()/1000));
     time = millis();
     level = level - 30;
+  }
+  
+  //second time
+  if(millis() - time2 > seconds2)
+  {
+    Oras2 = nf(int(millis()/1000));
+    time2 = millis();
   }
   
   if( lives == 5)
