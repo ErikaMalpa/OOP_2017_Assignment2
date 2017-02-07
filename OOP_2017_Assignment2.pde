@@ -61,6 +61,7 @@ Minim minim;
 String Oras;
 String Oras2;
 String UserName;
+String[] highScore;
 int speed;//speed of text
 int lastShot;
 int Score;
@@ -70,8 +71,6 @@ int Amo;
 int time;
 int seconds;
 int level;
-int time2;
-int seconds2;
 
 /*Others*/
 PFont font;
@@ -219,11 +218,7 @@ void draw()
     /*Timer used for the levels END*/
     
     /*Timer used to display*/
-    if(millis() - time2 > seconds2)
-    {
-      Oras2 = nf(int(millis()/1000));
-      time2 = millis();
-    }
+     Oras2 = nf(int(millis()/1000));
     /*Timer used to display END*/
     
     /* Classes */
@@ -275,7 +270,7 @@ void draw()
       }
     }
     //else it will play that there will be no ammo
-    else 
+    if(Amo == 0); 
     {
       print("noAmmo");
       noammo.rewind();
@@ -322,7 +317,7 @@ void startMenu()
   {
     stroke(255);
     noFill();
-    text("Enter your EnterName if you dare:" + UserName, x,y);
+    text("Enter your name if you dare:" + UserName, x,y);
   }
   
   if(EnterName == true)
@@ -426,5 +421,18 @@ void keyPressed()
    if (keyCode == 'Q')
    {
      exit();
+   }
+   //
+   if(keyCode == 'R')
+   {
+     lives = 10;
+     Amo = 20;
+     Score = 0;
+     Money = 0;
+     bullets.clear();
+     enemies.clear();
+     seconds = 60000;
+     Oras2 = nf(int(millis()/1000));
+     level = 150;
    }
 }
