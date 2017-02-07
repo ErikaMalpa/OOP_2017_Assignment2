@@ -70,6 +70,8 @@ class Enemy extends Skeleton
      lives--;
      zombieSound.rewind();
      zombieSound.play();
+     fill(255,0,0,30);
+     rect(0,0,width,height);
    }
   }
   
