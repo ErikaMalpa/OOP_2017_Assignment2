@@ -10,7 +10,12 @@ Rules for the game is very simple, you must eliminate the zombies before they in
 
 I highly recommend that you read the instructions!
 
+You must aim for the head! aiming for the body or legs when they're near you is not a definite kill. You must aim for the head <From testing the game with the image, sometimes when the'yre beside you
+and aim for their body you won't kill them. When you aim for the head it will definitely kill them>.
+
 If the Zombie reaches the bottom on the right hand side of the screen life will be taken away from you.
+
+If the Zombie touches you, your life will be taken away.
 
 You can buy Lives and Ammo's if you have enough money.
 
@@ -25,6 +30,7 @@ INSTRUCTIONS:
 6. Press P to pause and resume the game 
 7. Press Enter after you entered your name 
 8. Press Alt to begin the game
+9. Press R to restart game
 
 */
 
@@ -274,7 +280,7 @@ void draw()
       }
     }
     //else it will play that there will be no ammo
-    if(Amo == 0); 
+    else
     {
       print("noAmmo");
       noammo.rewind();

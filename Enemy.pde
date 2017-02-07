@@ -58,7 +58,7 @@ class Enemy extends Skeleton
       zombieSuccess.play();
    }
    /*Collision when zombies are on the right hand side or bottom*/
-   if (pos.x > 900 - r || pos.y > 824 && Invaded()) {
+   if (pos.x > 900 - r || pos.y > 849 - r && Invaded()) {
      lives--;
      zombieSound.rewind();
      zombieSound.play();
