@@ -71,7 +71,7 @@ void setup()
   lives = 1000;
   Amo = 15;
   time = millis();
-  seconds = 30000;
+  seconds = 40000;
   level = 150;
   
   /*Classes*/
@@ -164,15 +164,19 @@ void draw()
   }
   if(level == 60)
   {
+    level = level - 20;
+  }
+  if(level == 40)
+  {
     text("Level 4",750, 885);
   }
-  if(level == 30)
+  if(level == 10)
   {
-    text("Level 5",750, 885);
-  }
-  if(level == 0)
-  {
-    text("Finished",750, 885);
+    background(255);
+    noLoop();
+    textSize(70);
+    text("You've finished the game!",450, 300);
+    text("Score: " + Score ,450, 400);
   }
   
   //first time
