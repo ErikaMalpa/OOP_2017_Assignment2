@@ -348,8 +348,7 @@ void keyPressed()
      {
        noLoop();
        textSize(80);
-       stroke(255);
-       text("Paused",0,0);
+       text("Paused",0,-100);
      }
      else
      {
