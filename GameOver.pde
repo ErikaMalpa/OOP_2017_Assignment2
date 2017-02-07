@@ -1,3 +1,4 @@
+/*Game Over screen*/
 class GameOver
 {
   void display()

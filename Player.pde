@@ -1,3 +1,4 @@
+/*Player in the middle*/
 class Player extends Skeleton
 {
   float x, y, r;

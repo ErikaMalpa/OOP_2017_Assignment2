@@ -1,19 +1,20 @@
+/* The Zombie and 3 different collisions*/
 class Enemy extends Skeleton
 {
-  float r, a;
+  float a, r;
   PVector pos, vel;
-  float d;
   
-  Enemy(float x, float y,PVector vel, float dd)
+  Enemy(float x, float y,PVector vel, float rr)
   {
-    pos = new PVector(x,y);
-    this.d = dd;
+    this.pos = new PVector(x,y);
+    this.r = rr;
     this.vel = vel.get();
   }
   
+  /*Collision for bullets and enemy*/
   boolean Collision() {
     for (Bullet b : bullets) {
-     if (pos.dist(b.location) < d/2) {
+     if (pos.dist(b.location) < r/2) {
         Score = Score + 5;
         Money = Money + 10;
         return true;
@@ -21,7 +22,7 @@ class Enemy extends Skeleton
     }
     return false;
   }
-  
+  /*Collision when zombies are on the right hand side or bottom*/
   boolean Invaded() {
     for (Enemy e : enemies) {
      if (pos.dist(e.pos) < 25/2) {
@@ -30,7 +31,7 @@ class Enemy extends Skeleton
     }
     return false;
   }
-  
+  /*Collision of enemy & player*/
   boolean Hurt()
   {
     if(dist(pos.x,pos.y,player.x,player.y) <player.r)
@@ -43,17 +44,25 @@ class Enemy extends Skeleton
   void update()
   {
      pos.add(vel);
-    if (pos.x < 0 || pos.x > 900 - d || pos.y < 20 + d || pos.y > 850 - d || Collision()) {
-      enemies.remove(this);
+     /*Collision for bullets and enemy*/
+    if (pos.x < 0 || pos.x > 900 - r || pos.y < 20 + r || pos.y > 850 - r || Collision()) {
+      enemies.remove(this);//removes enemies on collision
+      zombieSuccess.rewind();
+      zombieSuccess.play();
    }
-   if (pos.x > 900 - d || pos.y > 824 && Invaded()) {
+   /*Collision when zombies are on the right hand side or bottom*/
+   if (pos.x > 900 - r || pos.y > 824 && Invaded()) {
      lives--;
+     zombieSound.rewind();
+     zombieSound.play();
    }
+   /*Collision of enemy & player*/
    if (Hurt())
    {
-     enemies.remove(this);
+     enemies.remove(this);//removes enemies on collision
      lives--;
-     
+     zombieSound.rewind();
+     zombieSound.play();
    }
   }
   
@@ -61,7 +70,7 @@ class Enemy extends Skeleton
   {
     pushMatrix();
     fill(#F5E2B9);
-    ellipse(pos.x, pos.y, d,d);
+    ellipse(pos.x, pos.y, r,r);
     stroke(0);
     line(pos.x - 15 ,pos.y - 10,pos.x,pos.y - 10);
     line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);

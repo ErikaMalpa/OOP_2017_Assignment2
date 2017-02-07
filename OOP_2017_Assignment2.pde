@@ -6,6 +6,26 @@ Assignment 2
   
 Overview of my assignemnt:
 
+Rules for the game is very simple, you must eliminate the zombies before they invade your place, with your friends and family inside!
+
+I highly recommend that you read the instructions!
+
+If the Zombie reaches the bottom on the right hand side of the screen life will be taken away from you.
+
+You can buy Lives and Ammo's if you have enough money.
+
+To gain money you must kill the zombies, you will earn points and also money.
+
+INSTRUCTIONS: 
+1. Press the MOUSE button to shoot the zombies 
+2. Use the mouse for the direction of the Bullets 
+3. Press the UP button to buy additional lives 
+4. Press the DOWN button to buy additional ammo 
+5. Press Q to quit the game 
+6. Press P to pause and resume the game 
+7. Press Enter after you entered your name 
+8. Press Alt to begin the game
+
 */
 
 /*Imports*/
@@ -23,25 +43,25 @@ ArrayList <Enemy> enemies = new ArrayList <Enemy> ();
 GameOver gameover;
 
 /*Sounds and Images used*/
-PImage bg;
-PImage bullet;
-PImage zombie;
-PImage heart;
-AudioPlayer BackSound;
-AudioPlayer gunshot;
-AudioPlayer zombieSound;
-AudioPlayer zombieDeath;
-AudioPlayer moneyN;//http://www.fromtexttospeech.com/
-AudioPlayer lifedanger;
-AudioPlayer gamefinish;
-AudioPlayer noammo;
+PImage bg;//background image of the game
+PImage bullet;//bullet
+PImage zombie;//background image at the menu and enter name
+PImage heart;//heart
+AudioPlayer BackSound;//the background song
+AudioPlayer gunshot;//gunshot sound
+AudioPlayer zombieSound;//when player press the chosen keyCodes this will play and also when they succse going past the player
+AudioPlayer zombieSuccess;//Plays when player is touched by zombies or dies
+AudioPlayer moneyN;//"money needed"
+AudioPlayer lifedanger;//"Life in critical danger... etc."
+AudioPlayer gamefinish;//"Game Over"
+AudioPlayer noammo;//"No ammo"
 Minim minim;
 
-/*Variables*/
+/*Variables used*/
 String Oras;
 String Oras2;
 String UserName;
-int speed;
+int speed;//speed of text
 int lastShot;
 int Score;
 int lives;
@@ -71,9 +91,9 @@ void setup()
   lives = 10;
   Amo = 20;
   time = millis();
-  seconds = 60000;
+  seconds = 60000;//seconds
   level = 150;
-  UserName = " ";
+  UserName = " "; //must have this because it will display null on the screen instead of blank
   
   /*Classes*/
   
@@ -88,23 +108,23 @@ void setup()
   
   /*Others*/
   
-  //fonts used
+  /*fonts used*/
   font = loadFont("BodoniMTPosterCompressed-48.vlw");
   textFont(font,80);
   
-  //Backgrounf Music
+  /*Music/sounds used*/
   minim = new Minim(this);
   BackSound = minim.loadFile("BackSound.mp3");
   gunshot = minim.loadFile("gunshot.wav");
   zombieSound = minim.loadFile("zsound.wav");
-  zombieDeath = minim.loadFile("zombieDeath.mp3");
+  zombieSuccess = minim.loadFile("zombieDeath.mp3");
   moneyN = minim.loadFile("moneyneeded.mp3");
   lifedanger = minim.loadFile("lifeindanger.mp3");
   gamefinish = minim.loadFile("gameover.mp3");
   noammo = minim.loadFile("noammo.mp3");
   BackSound.loop();
   
-  //loading background Image
+  //background Image
   bg = loadImage("BackGround.jpg");//http://img00.deviantart.net/5353/i/2013/276/f/6/ground_texture_06_by_bluecrystaleagle-d6p34ei.jpg
   
   //zombie bg 2
@@ -121,133 +141,153 @@ void draw()
 {
   if(!Begin)
   {
-  startMenu();
+    startMenu();
   }
   if(Begin)
   {
-  background(bg);
-  
-  pushMatrix();//rect up and down
-  noStroke();
-  fill(255);
-  rect(1,1,900,50);
-  rect(1,850,900,50);
-  popMatrix();
-  
-   pushMatrix();
-  textSize(40);
-  fill(0);
-  text("Player: " + UserName, 80,40);
-  text("Score: " + Score, 240, 40);
-  text("Lives: "+ lives, 440, 40);
-  text("Ammo: " + Amo, 600, 40);
-  text("Time: " + Oras2, 800, 40);
-  text("Money: £" + Money, 80, 885);
-  text("5         £200", 290, 885);
-  image(heart, 260, 860);
-  text("20       £50", 480, 885);
-  image(bullet, 460, 855);
-  popMatrix();
-  
-  println(level);
-  
+    background(bg);
+    
+    /*rect up and down*/
+    pushMatrix();
+    noStroke();
+    fill(255);
+    rect(1,1,900,50);
+    rect(1,850,900,50);
+    popMatrix();
+    /*rect up and down END*/
+    
+    /*Text on display*/
+    pushMatrix();
+    textSize(40);
+    fill(0);
+    text("Player: " + UserName, 80,40);
+    text("Score: " + Score, 240, 40);
+    text("Lives: "+ lives, 440, 40);
+    text("Ammo: " + Amo, 600, 40);
+    text("Time: " + Oras2, 800, 40);
+    text("Money: £" + Money, 80, 885);
+    text("5         £200", 290, 885);
+    image(heart, 260, 860);
+    text("20       £50", 480, 885);
+    image(bullet, 460, 855);
+    popMatrix();
+    /*Text on display end*/
+    
+    /* To print the level for me to know it's working*/
+    println(level);
+    
+    /*Levels*/
     if(level == 150)
-  {
-    text("Level 1",750, 885);
-  }
-  if(level == 120)
-  {
-    text("Level 2",750, 885);
-  }
-  if(level == 90)
-  {
-    text("Level 3",750, 885);
-  }
-  if(level == 60)
-  {
-    level = level - 20;
-  }
-  if(level == 40)
-  {
-    text("Level 4",750, 885);
-  }
-  if(level == 10)
-  {
-    background(255);
-    noLoop();
-    textSize(70);
-    text("You've finished the game!",450, 300);
-    text("Score: " + Score ,450, 400);
-  }
-  
-  //first time
-  if(millis() - time > seconds)
-  {
-    Oras = nf(int(millis()/1000));
-    time = millis();
-    level = level - 30;
-  }
-  
-  //second time
-  if(millis() - time2 > seconds2)
-  {
-    Oras2 = nf(int(millis()/1000));
-    time2 = millis();
-  }
-  
-  if( lives == 5)
-  {
-    lifedanger.rewind();
-    lifedanger.play();
-  }
-  
-  for (int i=bullets.size()-1; i>=0; i--) {
-    Bullet b = bullets.get(i);
-    b.update();
-    b.display();
-  }
-  
-  for (int i=enemies.size()-1; i>=0; i--) {
-    Enemy e = enemies.get(i);
-    e.update();
-    e.display();
-  }
-  
-  if (lives <= 0)
-  {
-    gameover.display();
-  }
-  
-  addEnemy(level);
-  
-  if(Amo >= 1)
-  {
-    if (mousePressed && millis() - lastShot > 400) {
-    addBullet();
-    lastShot = millis();
-    gunshot.rewind();
-    gunshot.play();
-    Amo--;
+    {
+      text("Level 1",750, 885);
     }
-  }
-  else
-  {
-    print("noAmmo");
-  }
-  
-  /* Classes */
-  player.update();
-  player.display();
-  gun.shoot();
-  }
+    if(level == 120)
+    {
+      text("Level 2",750, 885);
+    }
+    if(level == 90)
+    {
+      text("Level 3",750, 885);
+    }
+    if(level == 60)
+    {
+      level = level - 25;
+    }
+    if(level == 40)
+    {
+      text("Level 4",750, 885);
+    }
+    if(level == 5)
+    {
+      background(255);
+      noLoop();//to make the gamestop drawing
+      textSize(70);
+      text("You've finished the game!",450, 300);
+      text("Score: " + Score ,450, 400);
+    }
+    /*Levels End*/
+    
+    /*Timer used for the levels*/
+    if(millis() - time > seconds)
+    {
+      Oras = nf(int(millis()/1000));
+      time = millis();
+      level = level - 30;
+    }
+    /*Timer used for the levels END*/
+    
+    /*Timer used to display*/
+    if(millis() - time2 > seconds2)
+    {
+      Oras2 = nf(int(millis()/1000));
+      time2 = millis();
+    }
+    /*Timer used to display END*/
+    
+    /* Classes */
+    for (int i=bullets.size()-1; i>=0; i--) {
+      Bullet b = bullets.get(i);
+      b.update();
+      b.display();
+    }
+    
+    for (int i=enemies.size()-1; i>=0; i--) {
+      Enemy e = enemies.get(i);
+      e.update();
+      e.display();
+    }
+    
+    player.update();
+    player.display();
+    gun.display();
+    /*Classes used END*/
+    
+    /*Others*/
+    //if lives are 5, it will warn the player that it's lives are low and must buy more lives
+    if( lives == 5)
+    {
+      lifedanger.rewind();
+      lifedanger.play();
+    }
+    //if lives are 0 it will be gameOVer
+    if (lives <= 0)
+    {
+      gameover.display();
+    }
+    
+    //The amount of spawn is controlled here
+    addEnemy(level);
+    
+    //To make sure that bullets greater than 1, the player will be able to shoot, and it will play a gun shot sound
+    if(Amo >= 1)
+    {
+      if (mousePressed && millis() - lastShot > 400) 
+      {
+      addBullet();
+      lastShot = millis();
+      gunshot.rewind();
+      gunshot.play();
+      Amo--;
+      }
+    }
+    //else it will play that there will be no ammo
+    else 
+    {
+      print("noAmmo");
+      noammo.rewind();
+      noammo.play();
+    }
+   }
 }
 
+//To add enemy
 void addEnemy(int x) {
   if (frameCount % x == 0) {
     enemies.add(new Enemy(random(10,450), random(50,200), rand, 25));
   }
 }
 
+//to add bulletes
 void addBullet() {
   y.normalize();
   bullets.add(new Bullet(x,y));
@@ -258,6 +298,7 @@ void startMenu()
   background(zombie);
   textAlign(CENTER);
   
+  /* Makes the text moved up and down for some spice */
   int x, y;
   
   x = width/2;
@@ -272,7 +313,7 @@ void startMenu()
   {
     speed = 5;
   }
-  
+  /* Makes the text moved up and down for some spice END */
   if(EnterName == false)
   {
     stroke(255);
@@ -302,13 +343,16 @@ void keyPressed()
       {
         UserName = UserName.substring(0, UserName.length()-1);
       }
-    } else if (keyCode == DELETE) 
+    } 
+    else if (keyCode == DELETE) 
     {
       UserName = "";
-    } else if (keyCode != SHIFT && keyCode != BACKSPACE) 
+    } 
+    else if (keyCode != SHIFT && keyCode != BACKSPACE) 
     {
       UserName = UserName + key;
     }
+    //to enter the menu
     if (keyCode == ENTER)
     {
       EnterName = true;
@@ -317,6 +361,7 @@ void keyPressed()
       print("true");
     }
   }
+  //to buy lives
   if (keyCode  == UP)
   {
     if (Money >= 200)
@@ -330,6 +375,7 @@ void keyPressed()
       moneyN.play();
     }
   }
+  //to buy amo
   if (keyCode  == DOWN)
   {
     if (Money >= 50)
@@ -343,6 +389,7 @@ void keyPressed()
       moneyN.play();
     }
   }
+  //to play the game
   if (keyCode == ALT)
     {
       print("ALT");
@@ -350,13 +397,14 @@ void keyPressed()
       zombieSound.rewind();
       zombieSound.play();
     }
+    //possible highscore
     if (keyCode == CONTROL)
     {
       print("CONTROL");
       zombieSound.rewind();
       zombieSound.play();
     }
-    //to pause game
+    //to pause game, stops the main from drawing by using noloop() and resumes by loop()
    if (keyCode == 'P')
    {
      if(looping)
@@ -370,6 +418,7 @@ void keyPressed()
        loop();
      }
    }
+   //to quit the game
    if (keyCode == 'Q')
    {
      exit();
