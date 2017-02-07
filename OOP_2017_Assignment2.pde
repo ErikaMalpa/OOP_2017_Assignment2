@@ -188,16 +188,18 @@ void draw()
     if(level == 90)
     {
       text("Level 3",750, 885);
+      seconds = 80000;
     }
     if(level == 60)
     {
-      level = level - 25;
+      level = level - 20;
+      seconds = 90000;
     }
     if(level == 40)
     {
       text("Level 4",750, 885);
     }
-    if(level == 5)
+    if(level == 10)
     {
       background(255);
       noLoop();//to make the gamestop drawing
@@ -237,6 +239,13 @@ void draw()
       e.display();
     }
     
+    //if lives are 0 it will be gameOVer
+    if (lives <= 0)
+    {
+      gameover.display();
+      noLoop();
+    }
+    
     player.update();
     player.display();
     gun.display();
@@ -248,11 +257,6 @@ void draw()
     {
       lifedanger.rewind();
       lifedanger.play();
-    }
-    //if lives are 0 it will be gameOVer
-    if (lives <= 0)
-    {
-      gameover.display();
     }
     
     //The amount of spawn is controlled here
