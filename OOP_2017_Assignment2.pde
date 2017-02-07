@@ -24,7 +24,9 @@ GameOver gameover;
 
 /*Sounds and Images used*/
 PImage bg;
+PImage bullet;
 PImage zombie;
+PImage heart;
 AudioPlayer BackSound;
 AudioPlayer gunshot;
 AudioPlayer zombieSound;
@@ -106,6 +108,12 @@ void setup()
   
   //zombie bg 2
   zombie = loadImage("zombie.jpg");
+  
+  //heart - http://pngimg.com/upload/heart_PNG706.png
+  heart = loadImage("heart.png");
+  
+  //bullet
+  bullet = loadImage("bullet.png");
 }
 
 void draw()
@@ -129,13 +137,15 @@ void draw()
   textSize(40);
   fill(0);
   text("Player: " + UserName, 80,40);
-  text("Score: " + Score, 250, 40);
-  text("Lives: " + lives, 450, 40);
+  text("Score: " + Score, 240, 40);
+  text("Lives: "+ lives, 440, 40);
+  text("Ammo: " + Amo, 600, 40);
+  text("Time: " + Oras2, 800, 40);
   text("Money: £" + Money, 80, 885);
-  text("10 Lives for £200", 650, 40);
-  text("Ammo: " + Amo, 250, 885);
-  text("20 Ammo for £50", 450, 885);  
-  text("Time: " + Oras2, 650, 885);
+  text("10         £200", 290, 885);
+  image(heart, 260, 860);
+  text("20       £50", 480, 885);
+  image(bullet, 460, 855);
   popMatrix();
   
   println(level);
