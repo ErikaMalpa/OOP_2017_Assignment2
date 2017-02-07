@@ -36,6 +36,7 @@ AudioPlayer noammo;
 Minim minim;
 
 /*Variables*/
+String Oras;
 String UserName;
 int speed;
 int lastShot;
@@ -43,6 +44,9 @@ int Score;
 int lives;
 int Money;
 int Amo;
+int time;
+int seconds;
+int level;
 
 /*Others*/
 PFont font;
@@ -59,8 +63,11 @@ void setup()
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
-  lives = 10;
+  lives = 1000;
   Amo = 15;
+  time = millis();
+  seconds = 5000;
+  level = 150;
   
   /*Classes*/
   
@@ -124,8 +131,18 @@ void draw()
   text("Money: £" + Money, 80, 885);
   text("10 Lives for £200", 650, 40);
   text("Ammo: " + Amo, 250, 885);
-  text("20 Ammo for £50", 450, 885);
+  text("20 Ammo for £50", 450, 885);  
   popMatrix();
+  
+  println(level);
+  
+  //first time
+  if(millis() - time > seconds)
+  {
+    Oras = nf(int(millis()/1000));
+    time = millis();
+    level = level - 30;
+  }
   
   if( lives == 5)
   {
@@ -150,11 +167,11 @@ void draw()
     gameover.display();
   }
   
-  addEnemy(50);
+  addEnemy(level);
   
   if(Amo >= 1)
   {
-    if (mousePressed && millis() - lastShot > 500) {
+    if (mousePressed && millis() - lastShot > 400) {
     addBullet();
     lastShot = millis();
     gunshot.rewind();
@@ -294,6 +311,9 @@ void keyPressed()
      if(looping)
      {
        noLoop();
+       textSize(80);
+       stroke(255);
+       text("Paused",0,0);
      }
      else
      {

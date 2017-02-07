@@ -1,9 +1,6 @@
 class Player extends Skeleton
 {
   float x, y, r;
-  boolean shoot;
-  ArrayList<Bullet> bullets;
-  float bulletCounter;
   
   
   Player(float xx, float yy, float rr)
@@ -11,9 +8,6 @@ class Player extends Skeleton
     x = xx;
     y = yy;
     r = rr;
-    
-    //Bullets
-    bullets = new ArrayList<Bullet>();
   }
   
   void update()
