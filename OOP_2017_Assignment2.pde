@@ -356,9 +356,9 @@ void startMenu()
     text("P pause game",x,780);
     text("R restart game",x,820);
     text("P pause",x,860);
-    if(hs = true)
+    if(hs)
     {
-      print("true s");
+      highscore.display();
     }
   }
 }
@@ -435,6 +435,7 @@ void keyPressed()
       zombieSound.rewind();
       zombieSound.play();
       highscore.display();
+      hs = true;
     }
     //to pause game, stops the main from drawing by using noloop() and resumes by loop()
    if (keyCode == 'P')
