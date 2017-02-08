@@ -1,21 +1,23 @@
 # OOP_2017_Assignment2
 My Game assignment for my OOP class <c15339871 Erika Secillano Dt-282-2 Group E>
 
-The YouTube video = https://www.youtube.com/watch?v=4-1z_U02TnY <I have annotations added as  I forgot to mention things or implemented new things, so please don't watch on mobile!>
+The YouTube video = https://www.youtube.com/watch?v=4-1z_U02TnY [I have annotations added as  I forgot to mention things or implemented new things, so please don't watch on mobile!]
 
 Rules for the game is very simple, you must eliminate the zombies before they invade your place,
 with your friends and family inside!
 
 I highly recommend that you read the instructions!
 
-You must aim for the head! aiming for the body or legs when they're near you is not a definite kill. You must aim for the head <From testing the game with the image, sometimes when the'yre beside you
-and aim for their body you won't kill them. When you aim for the head it will definitely kill them>.
+You must aim for the head! aiming for the body or legs when they're near you is not a definite kill. You must aim for the head [From testing the game with the image, sometimes when the'yre beside you
+and aim for their body you won't kill them. When you aim for the head it will definitely kill them].
 
 If the Zombie reaches the bottom on the right hand side of the screen life will be taken away from you
 
 You can buy Lives and Ammo's if you have enough money.
 
 To gain money you must kill the zombies, you will earn points and also money.
+
+-
 
 INSTRUCTIONS:
 
@@ -37,9 +39,9 @@ INSTRUCTIONS:
 
 9. Press R to restart game
 
-10. Press B to go back
+10. Press B to go back to the Menu [Restarts the game when you go play again]
 
---------------------------------------------------------------------------
+-
 
 Level 1 - Lasts for 60 seconds, 10 Money & 5 points is obtained from killing the zombies 
 
@@ -51,7 +53,7 @@ Level 4 - Lasts for 90 seconds, 5 Money & 5 points is obtained from killing the 
 
 after that you will beat the game
 
---------------------------------------------------------------------------
+-
   
  Music and Pictures for the game:
  
