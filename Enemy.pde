@@ -31,8 +31,10 @@ class Enemy extends Skeleton
   }
   /*Collision when zombies are on the right hand side or bottom*/
   boolean Invaded() {
-    for (Enemy e : enemies) {
-     if (pos.dist(e.pos) < 25/2) {
+    for (Enemy e : enemies) 
+    {
+     if (pos.dist(e.pos) < 25/2) 
+     {
         return true;
       }
     }
@@ -50,29 +52,31 @@ class Enemy extends Skeleton
   
   void update()
   {
-     pos.add(vel);
+    pos.add(vel);
      /*Collision for bullets and enemy or sides*/
-    if (pos.x < 0 || pos.x > 900 - r || pos.y < r || pos.y > 850 - r || Collision()) {
+    if (pos.x < 0 || pos.x > 900 - r || pos.y < r || pos.y > 850 - r || Collision()) 
+    {
       enemies.remove(this);//removes enemies on collision
       zombieSuccess.rewind();
       zombieSuccess.play();
-   }
-   /*Collision when zombies are on the right hand side or bottom*/
-   if (pos.x > 900 - r || pos.y > 849 - r && Invaded()) {
+    }
+    /*Collision when zombies are on the right hand side or bottom*/
+    if (pos.x > 900 - r || pos.y > 849 - r && Invaded()) 
+    {
      lives--;
      zombieSound.rewind();
      zombieSound.play();
-   }
-   /*Collision of enemy & player*/
-   if (Hurt())
-   {
+    }
+    /*Collision of enemy & player*/
+    if (Hurt())
+    {
      enemies.remove(this);//removes enemies on collision
      lives--;
      zombieSound.rewind();
      zombieSound.play();
      fill(255,0,0,80);
      rect(0,0,900,900);
-   }
+    }
   }
   
   void display()
@@ -80,9 +84,6 @@ class Enemy extends Skeleton
     pushMatrix();
     fill(#F5E2B9);
     image(zombieBod,pos.x, pos.y, r,r);
-    stroke(0);
-    //line(pos.x - 15 ,pos.y - 10,pos.x,pos.y - 10);
-    //line(pos.x + 5,pos.y + 10,pos.x,pos.y + 25);
     popMatrix();
   }
 }

@@ -31,7 +31,7 @@ INSTRUCTIONS:
 7. Press Enter after you entered your name 
 8. Press Alt to begin the game
 9. Press R to restart game
-10. Press B to go back to the Menu
+10. Press B to go back to the Menu/Restarts the game as well.
 
 */
 
@@ -39,7 +39,7 @@ INSTRUCTIONS:
 import ddf.minim.*;
 
 /*Boolean used*/
-Boolean EnterName;
+Boolean EnterName;//Enter name
 Boolean Begin;//Start the game
 Boolean hs;//highScore
 
@@ -100,7 +100,7 @@ void setup()
   lives = 10;
   Amo = 20;
   time = millis();
-  seconds = 60000;//seconds
+  seconds = 60000;//seconds this is 1 minute
   level = 150;
   UserName = " "; //must have this because it will display null on the screen instead of blank
   
@@ -211,12 +211,12 @@ void draw()
     if(level == 90)
     {
       text("Level 3",750, 885);
-      seconds = 80000;
+      seconds = 80000;//level 3 lasts 80 seconds
     }
     if(level == 60)
     {
       level = level - 20;
-      seconds = 90000;
+      seconds = 90000;//level 4 lasts for 90 seconds
     }
     if(level == 40)
     {
@@ -247,14 +247,16 @@ void draw()
     
     /* Classes */
     //Bullets
-    for (int i=bullets.size()-1; i>=0; i--) {
+    for (int i=bullets.size()-1; i>=0; i--) 
+    {
       Bullet b = bullets.get(i);
       b.update();
       b.display();
     }
     
     //Enemies
-    for (int i=enemies.size()-1; i>=0; i--) {
+    for (int i=enemies.size()-1; i>=0; i--) 
+    {
       Enemy e = enemies.get(i);
       e.update();
       e.display();
@@ -306,14 +308,17 @@ void draw()
 }
 
 //To add enemy
-void addEnemy(int x) {
-  if (frameCount % x == 0) {
+void addEnemy(int x) 
+{
+  if (frameCount % x == 0) 
+  {
     enemies.add(new Enemy(random(10,450), random(50,200), rand, 50));
   }
 }
 
 //to add bulletes
-void addBullet() {
+void addBullet() 
+{
   y.normalize();
   bullets.add(new Bullet(x,y));
 }
@@ -340,6 +345,8 @@ void startMenu()
   }
   
   /* Makes the text moved up and down for some spice END */
+  
+  /*Enter Name*/
   if(EnterName == false)
   {
     stroke(255);
@@ -367,6 +374,7 @@ void startMenu()
       highscore.display();
     }
   }
+  /*Enter Name End*/
 }
   
 void keyPressed() 
@@ -474,7 +482,7 @@ void keyPressed()
      seconds = 60000;
      level = 150;
    }
-   //Code to go back
+   //Code to go back also restarts game
    if(keyCode == 'B')
    {
      loop();
