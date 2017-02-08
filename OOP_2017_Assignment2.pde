@@ -40,6 +40,7 @@ import ddf.minim.*;
 /*Boolean used*/
 Boolean EnterName;
 Boolean Begin;
+Boolean hs;
 
 /*Classes used*/
 Player player;
@@ -47,6 +48,7 @@ Gun gun;
 ArrayList <Bullet> bullets = new ArrayList <Bullet> ();
 ArrayList <Enemy> enemies = new ArrayList <Enemy> ();
 GameOver gameover;
+HighScore highscore;
 
 /*Sounds and Images used*/
 PImage bg;//background image of the game
@@ -68,7 +70,6 @@ Minim minim;
 String Oras;
 String Oras2;
 String UserName;
-String[] highScore;
 int speed;//speed of text
 int lastShot;
 int Score;
@@ -91,6 +92,7 @@ void setup()
   
   EnterName = false;
   Begin = false;
+  hs = false;
   x = new PVector(width/2, height/2);
   y = new PVector();
   rand = new PVector(random(0,1), random(1,-1));
@@ -112,7 +114,15 @@ void setup()
   //GameOver
   gameover = new GameOver();
   
+  //HighScore
+  highscore = new HighScore();
+  
   /*Others*/
+  
+  /* File i/o 
+  String Scoress = Score + " " + UserName;
+  String[] list = split(Scoress,' ');
+  saveStrings("data/HighScore.txt",list);*/
   
   /*fonts used*/
   font = loadFont("BodoniMTPosterCompressed-48.vlw");
@@ -322,6 +332,7 @@ void startMenu()
   {
     speed = 5;
   }
+  
   /* Makes the text moved up and down for some spice END */
   if(EnterName == false)
   {
@@ -335,10 +346,20 @@ void startMenu()
     stroke(255);
     noFill();
     textSize(50);
-    text("Welcome to the Zombie Blast Game " + UserName, x,y);
-    text("Alt to play",x, y + 50);
-    //text("Ctrl for HighScore",x, y + 100);
-    text("Q to quit",x, y + 100);
+    text("Welcome to the Zombie Blast Game " + UserName, x,y - 100);
+    text("Alt to play",x, y - 50);
+    text("Q to quit",x, y);
+    textSize(30);
+    text("MOUSE to shoot",x,660);
+    text("DOWN key to buy Ammo",x,700);
+    text("UP key to buy Lives",x,740);
+    text("P pause game",x,780);
+    text("R restart game",x,820);
+    text("P pause",x,860);
+    if(hs = true)
+    {
+      print("true s");
+    }
   }
 }
   
@@ -365,6 +386,7 @@ void keyPressed()
     if (keyCode == ENTER)
     {
       EnterName = true;
+      hs = false;
       zombieSound.rewind();
       zombieSound.play();
       print("true");
@@ -412,6 +434,7 @@ void keyPressed()
       print("CONTROL");
       zombieSound.rewind();
       zombieSound.play();
+      highscore.display();
     }
     //to pause game, stops the main from drawing by using noloop() and resumes by loop()
    if (keyCode == 'P')
@@ -442,7 +465,6 @@ void keyPressed()
      bullets.clear();
      enemies.clear();
      seconds = 60000;
-     Oras2 = nf(int(millis()/1000));
      level = 150;
    }
 }
