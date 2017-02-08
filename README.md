@@ -1,7 +1,7 @@
 # OOP_2017_Assignment2
 My Game assignment for my OOP class <c15339871 Erika Secillano Dt-282-2 Group E>
 
-The YouTube video = https://www.youtube.com/watch?v=yzzI0VWHBdQ
+The YouTube video = https://www.youtube.com/watch?v=4-1z_U02TnY
 
 Rules for the game is very simple, you must eliminate the zombies before they invade your place,
 with your friends and family inside!
@@ -38,6 +38,20 @@ INSTRUCTIONS:
 9. Press R to restart game
 
 10. Press B to go back
+
+--------------------------------------------------------------------------
+
+Level 1 - Lasts for 60 seconds, 10 Money & 5 points is obtained from killing the zombies 
+
+Level 2 - Lasts for 60 seconds, 10 Money & 5 points is obtained from killing the zombies 
+
+Level 3 - Lasts for 80 seconds, 5 Money & 5 points is obtained from killing the zombies 
+
+Level 4 - Lasts for 90 seconds, 5 Money & 5 points is obtained from killing the zombies 
+
+after that you will beat the game
+
+--------------------------------------------------------------------------
   
  Music and Pictures for the game:
  
