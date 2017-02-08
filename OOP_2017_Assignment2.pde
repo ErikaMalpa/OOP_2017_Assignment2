@@ -349,13 +349,13 @@ void startMenu()
     text("Welcome to the Zombie Blast Game " + UserName, x,y - 100);
     text("Alt to play",x, y - 50);
     text("Q to quit",x, y);
+    text("CTRL to view HighScore",x, y + 50);
     textSize(30);
     text("MOUSE to shoot",x,660);
     text("DOWN key to buy Ammo",x,700);
     text("UP key to buy Lives",x,740);
     text("P pause game",x,780);
     text("R restart game",x,820);
-    text("P pause",x,860);
     if(hs)
     {
       highscore.display();
@@ -467,5 +467,11 @@ void keyPressed()
      enemies.clear();
      seconds = 60000;
      level = 150;
+   }
+   //Code to go back
+   if(keyCode == 'B')
+   {
+     hs = false;
+     Begin = false;
    }
 }

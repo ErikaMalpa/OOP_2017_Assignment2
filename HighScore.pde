@@ -2,7 +2,7 @@ class HighScore
 {
   void display()
   {
-    background(0);
+    background(zombie);
     String HScore[] = loadStrings("data/HighScore.txt");
     for (int i = 0; i < HScore.length; i++)
     {
@@ -15,5 +15,9 @@ class HighScore
       text(HScore[3],450, 350);
       text(HScore[4],450, 400);
     }
+    
+    text("Press Alt to start game",450, 500);
+    text("Press B to go back",450, 550);
+    text("Press Q to quit",450,600);
   }
 }
