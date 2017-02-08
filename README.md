@@ -1,12 +1,15 @@
 # OOP_2017_Assignment2
 My Game assignment for my OOP class <c15339871 Erika Secillano Dt-282-2 Group E>
 
-The YouTube video = 
+The YouTube video = https://www.youtube.com/watch?v=yzzI0VWHBdQ
 
 Rules for the game is very simple, you must eliminate the zombies before they invade your place,
 with your friends and family inside!
 
 I highly recommend that you read the instructions!
+
+You must aim for the head! aiming for the body or legs when they're near you is not a definite kill. You must aim for the head <From testing the game with the image, sometimes when the'yre beside you
+and aim for their body you won't kill them. When you aim for the head it will definitely kill them>.
 
 If the Zombie reaches the bottom on the right hand side of the screen life will be taken away from you.
 
@@ -33,8 +36,10 @@ INSTRUCTIONS:
 8. Press Alt to begin the game
 
 9. Press R to restart game
+
+10. Press B to go back
   
- Resoures used such as music and pictures:
+ Music and Pictures for the game:
  
  //Sounds used
  
@@ -44,6 +49,8 @@ INSTRUCTIONS:
  
  //for the zombie sound - https://www.freesound.org/people/Under7dude/sounds/163440/
  
+ //for the zombie sound #2 - https://www.freesound.org/people/scorpion67890/sounds/169058/
+ 
  //for the female robot voices - http://www.fromtexttospeech.com/
  
  //Pictures used
@@ -51,3 +58,9 @@ INSTRUCTIONS:
  //for the play background picture - http://img00.deviantart.net/5353/i/2013/276/f/6/ground_texture_06_by_bluecrystaleagle-d6p34ei.jpg
  
  //for the menu background picture - http://wallpapersafari.com/w/eZQ4AG/
+ 
+ //for the gun picture - http://www.i2clipart.com/cliparts/8/6/2/f/clipart-projectile-01-862f.png
+ 
+ //for the heart picture - http://pngimg.com/upload/heart_PNG706.png
+ 
+ //for the zombie picture - //http://www.pngall.com/wp-content/uploads/2016/07/Zombie-Transparent.png
