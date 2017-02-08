@@ -31,6 +31,7 @@ INSTRUCTIONS:
 7. Press Enter after you entered your name 
 8. Press Alt to begin the game
 9. Press R to restart game
+10. Press B to go back to the Menu
 
 */
 
@@ -471,7 +472,16 @@ void keyPressed()
    //Code to go back
    if(keyCode == 'B')
    {
+     loop();
      hs = false;
      Begin = false;
+     lives = 10;
+     Amo = 20;
+     Score = 0;
+     Money = 0;
+     bullets.clear();
+     enemies.clear();
+     seconds = 60000;
+     level = 150;
    }
 }
