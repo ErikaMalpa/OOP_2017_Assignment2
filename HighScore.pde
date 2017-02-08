@@ -1,3 +1,4 @@
+/*Shows the high Score */
 class HighScore
 {
   void display()

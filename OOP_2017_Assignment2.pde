@@ -40,8 +40,8 @@ import ddf.minim.*;
 
 /*Boolean used*/
 Boolean EnterName;
-Boolean Begin;
-Boolean hs;
+Boolean Begin;//Start the game
+Boolean hs;//highScore
 
 /*Classes used*/
 Player player;
@@ -120,10 +120,13 @@ void setup()
   
   /*Others*/
   
-  /* File i/o 
-  String Scoress = Score + " " + UserName;
-  String[] list = split(Scoress,' ');
-  saveStrings("data/HighScore.txt",list);*/
+  //File i/o 
+  if(lives < 1)
+  {
+    String Scoress = Score + " = " + UserName;
+    String[] HScore = split(Scoress,' ');
+    saveStrings("data/HighScore.txt",HScore);
+  }
   
   /*fonts used*/
   font = loadFont("BodoniMTPosterCompressed-48.vlw");
@@ -243,12 +246,14 @@ void draw()
     /*Timer used to display END*/
     
     /* Classes */
+    //Bullets
     for (int i=bullets.size()-1; i>=0; i--) {
       Bullet b = bullets.get(i);
       b.update();
       b.display();
     }
     
+    //Enemies
     for (int i=enemies.size()-1; i>=0; i--) {
       Enemy e = enemies.get(i);
       e.update();
@@ -401,7 +406,7 @@ void keyPressed()
       lives = lives + 5;
       Money = Money - 200;
     }
-    else
+    else//It will say that you need money
     {
       moneyN.rewind();
       moneyN.play();
@@ -415,7 +420,7 @@ void keyPressed()
       Amo = Amo + 20;
       Money = Money - 50;
     }
-    else
+    else//It will say that you need money
     {
       moneyN.rewind();
       moneyN.play();
@@ -457,7 +462,7 @@ void keyPressed()
    {
      exit();
    }
-   //
+   //to restart the game
    if(keyCode == 'R')
    {
      lives = 10;

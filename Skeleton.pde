@@ -1,3 +1,4 @@
+/*attempt on abstact class*/
 abstract class Skeleton
 {
   boolean isAlive;
