@@ -1,5 +1,7 @@
 # OOP_2017_Assignment2
-My Game assignment for my OOP class <c15339871 Erika Secillano Dt-282-2 Group E>
+-
+My Game assignment for my OOP class [c15339871 Erika Secillano Dt-282-2 Group E]
+-
 
 The YouTube video = https://www.youtube.com/watch?v=4-1z_U02TnY [I have annotations added as  I forgot to mention things or implemented new things, so please don't watch on mobile!]
 
